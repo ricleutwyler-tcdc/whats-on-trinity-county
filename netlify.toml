@@ -1,0 +1,5 @@
+# Static site — the published file is index.html at the repo root.
+# No build step: the weekly generator commits a rebuilt index.html and Netlify publishes it.
+[build]
+  publish = "."
+  command = ""
