@@ -232,8 +232,8 @@
       <span class="flavor" data-icon="water">Trinity &amp; Ruth Lakes</span>
     </div>
     <div class="meta-row">
-      <span data-icon="calendar">Fri Aug 7 – Sat Aug 22, 2026</span>
-      <span data-icon="ticket" id="metaCount">17 events</span>
+      <span data-icon="calendar">Sat Aug 15 – Sat Aug 22, 2026</span>
+      <span data-icon="ticket" id="metaCount">13 events</span>
       <span data-icon="refresh">Updated Aug 13, 2026</span>
       <a class="meta-cta" href="https://www.trinityjournal.com/users/admin/calendar/event/" target="_blank" rel="noopener" data-icon="plus">Submit an event — free</a>
     </div>
@@ -385,7 +385,6 @@ const TAG = {visitor:{l:'Visitors',ic:'visitor'}, local:{l:'Locals',ic:'local'},
 const J = "https://www.trinityjournal.com/calendar/";
 
 const EVENTS = [
-  // ----- recurring weekly -----
   { date:"2026-07-31", weekly:true, season:"year-round", for:["visitor","local","family"], dayLabel:"Weekly \u00b7 Fri\u2013Sun",
     cat:"Movies", icon:"film", grad:["#1E7A6E","#14564D"], title:"At the Movies \u00b7 The Trinity Theatre",
     where:"The Trinity Theatre, Main St., Weaverville",
@@ -423,27 +422,6 @@ const EVENTS = [
     desc:"Grab the mic at the Coffee Creek Country Store — a laid-back north-county night, every Saturday.",
     wx:{hi:87,lo:52,txt:"Sunny · approx.",hot:false},
     info:J, map:"Coffee Creek Country Store, 260 S Derrick Flat Road, Trinity Center, CA 96091" },
-  // ----- dated -----
-  { date:"2026-08-07", for:["local","family"], dayLabel:"Fri · Aug 7 · 7:00–9:00 PM",
-    cat:"Dance", icon:"music", grad:["#C0562F","#6B3418"], title:"Line Dancing at the Tangle Blue",
-    where:"Tangle Blue Saloon, 160 Nugget Lane, Weaverville",
-    desc:"Free, all-ages line dancing — beginning and intermediate instruction, first and third Fridays at the Tangle Blue Saloon.",
-    wx:null, info:J, map:"Tangle Blue Saloon, 160 Nugget Lane, Weaverville, CA 96093" },
-  { date:"2026-08-07", for:["local","family"], feat:true, dayLabel:"Fri–Sun · Aug 7–9",
-    cat:"Sports", icon:"trophy", grad:["#14564D","#1E7A6E"], title:"Tom Wakefield Memorial Big Ball Tournament",
-    where:"Hayfork Little League Field, Hayfork",
-    desc:"The 34th annual Tom Wakefield Memorial Big Ball Tournament — a full weekend of softball in Hayfork.",
-    wx:null, info:J, map:"Hayfork Little League Field, Hayfork, CA 96041" },
-  { date:"2026-08-08", for:["local","family"], dayLabel:"Sat · Aug 8 · 10 AM–4 PM",
-    cat:"Family", icon:"family", grad:["#2E8E90","#14564D"], title:"Lewiston Children's Business Fair",
-    where:"Lewiston Community Center, 130 Texas St., Lewiston",
-    desc:"Ten young entrepreneurs design, make, market, and sell their own products — a hands-on kids' market in Lewiston.",
-    wx:null, info:J, map:"Lewiston Community Center, 130 Texas Street, Lewiston, CA 96052" },
-  { date:"2026-08-09", for:["local","family"], dayLabel:"Sun · Aug 9 · 9 AM–3 PM",
-    cat:"Market", icon:"market", grad:["#4E9E92","#14564D"], title:"Craft Fair & Swap Meet",
-    where:"Hayfork VFW Hall, 9201 Highway 3, Hayfork",
-    desc:"Monthly craft fair and swap meet at the Hayfork VFW Hall — browse, buy, and trade, second Sunday of the month.",
-    wx:null, info:J, map:"Hayfork VFW Hall, 9201 Highway 3, Hayfork, CA 96041" },
   { date:"2026-08-15", for:["local","family"], dayLabel:"Sat · Aug 15 · 9 AM signups",
     cat:"Sports", icon:"rodeo", grad:["#C0562F","#6b3418"], title:"Gymkhana & Barrel Race Series",
     where:"Trinity County Fairgrounds horse arena, 6000 Highway 3, Hayfork",
@@ -479,7 +457,7 @@ const EVENTS = [
     where:"Trinity County Brewing Co., 301 Main St., Weaverville",
     desc:"Live music at Trinity County Brewing — craft beer, food, and a local band. No cover charge.",
     wx:null, info:J, map:"Trinity County Brewing Company, 301 Main Street, Weaverville, CA 96093" }
-];
+  ];
 
 const grid = document.getElementById('grid');
 const weeklyGrid = document.getElementById('weeklyGrid');
