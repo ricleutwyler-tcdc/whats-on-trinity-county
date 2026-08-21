@@ -89,7 +89,11 @@ def main():
         if town and town in by_town and dstr in by_town[town]:
             f = by_town[town][dstr]; return (f['hi'], f['lo'], f['txt'], False)
         if ref_town in by_town and dstr in by_town[ref_town]:
-            f = by_town[ref_town][dstr]; return (f['hi'], f['lo'], f['txt'], True)
+            f = by_town[ref_town][dstr]
+            # Only flag "approx." for a genuinely outlying town borrowing the
+            # reference forecast. An unmatched venue (town is None) or a
+            # Weaverville-area one is treated as exact — no approx tag.
+            return (f['hi'], f['lo'], f['txt'], town in OUTLYING)
         return None
 
     i = t.index('EVENTS'); lb = t.index('[', i)
