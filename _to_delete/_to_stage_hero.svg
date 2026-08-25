@@ -1,0 +1,24 @@
+  <svg class="nh-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="nhSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#122b34"/><stop offset="0.34" stop-color="#2d5a5b"/><stop offset="0.62" stop-color="#6f8f6a"/><stop offset="0.82" stop-color="#e2b268"/><stop offset="1" stop-color="#f4d99a"/></linearGradient>
+      <radialGradient id="nhSun" cx="0.68" cy="0.8" r="0.42"><stop offset="0" stop-color="#fff4d6" stop-opacity="0.98"/><stop offset="0.5" stop-color="#ffe6ab" stop-opacity="0.35"/><stop offset="1" stop-color="#ffe6ab" stop-opacity="0"/></radialGradient>
+      <linearGradient id="nhR1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fae9a"/><stop offset="1" stop-color="#6d9384"/></linearGradient>
+      <linearGradient id="nhR2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#547f75"/><stop offset="1" stop-color="#3f6d63"/></linearGradient>
+      <linearGradient id="nhR4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#173f3a"/><stop offset="1" stop-color="#0e332f"/></linearGradient>
+      <linearGradient id="nhLake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3ac82"/><stop offset="0.32" stop-color="#84957a"/><stop offset="0.64" stop-color="#3c6d66"/><stop offset="1" stop-color="#1d4842"/></linearGradient>
+    </defs>
+    <rect width="1600" height="900" fill="url(#nhSky)"/>
+    <rect width="1600" height="900" fill="url(#nhSun)"/>
+    <g fill="#fff8e6" opacity="0.7"><circle cx="180" cy="90" r="1.6"/><circle cx="340" cy="150" r="1.2"/><circle cx="520" cy="70" r="1.5"/><circle cx="760" cy="120" r="1.1"/><circle cx="1080" cy="80" r="1.4"/><circle cx="1300" cy="140" r="1.2"/><circle cx="1460" cy="95" r="1.5"/></g>
+    <g stroke="#12352f" stroke-width="3" fill="none" opacity="0.5" stroke-linecap="round"><path d="M430 205 q12 -10 24 0 q12 -10 24 0"/><path d="M500 235 q9 -8 18 0 q9 -8 18 0"/></g>
+    <circle cx="1090" cy="452" r="46" fill="#fff2cf" opacity="0.92"/>
+    <path d="M0 430 L200 372 L400 432 L620 358 L840 428 L1060 350 L1280 430 L1500 366 L1600 408 L1600 552 L0 552 Z" fill="url(#nhR1)" opacity="0.8"/>
+    <path d="M0 492 L240 430 L470 498 L700 424 L940 500 L1180 430 L1420 500 L1600 458 L1600 560 L0 560 Z" fill="url(#nhR2)"/>
+    <rect x="0" y="546" width="1600" height="7" fill="#123f3a"/>
+    <rect x="0" y="552" width="1600" height="142" fill="url(#nhLake)"/>
+    <rect x="1068" y="562" width="46" height="126" fill="#fff2cf" opacity="0.15"/>
+    <g opacity="0.20" fill="#fff4d6"><rect x="1050" y="586" width="84" height="3" rx="2"/><rect x="1040" y="616" width="104" height="3" rx="2"/><rect x="1058" y="648" width="70" height="3" rx="2"/></g>
+    <g opacity="0.08" fill="#ffffff"><rect x="300" y="600" width="250" height="3" rx="2"/><rect x="520" y="636" width="320" height="3" rx="2"/></g>
+    <path d="M0 690 L300 662 L600 700 L900 658 L1200 700 L1450 666 L1600 694 L1600 900 L0 900 Z" fill="url(#nhR4)"/>
+    <g fill="#0a2a26"><path d="M120 800 l30 -150 l30 150 z"/><path d="M133 732 l17 -86 l17 86 z"/><path d="M225 815 l24 -120 l24 120 z"/><path d="M1430 805 l32 -160 l32 160 z"/><path d="M1450 735 l17 -92 l17 92 z"/></g>
+  </svg>
