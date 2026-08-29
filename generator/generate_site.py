@@ -93,11 +93,13 @@ REGISTRY = [
  (['farmers market'],'market',['visitor','local','family'],False,"Local produce, prepared food, and makers at the Highland Art Center meadow."),
  (['craft fair','swap meet'],'market',['local','family'],False,"Browse, buy, and trade — the monthly craft fair and swap meet at the Hayfork VFW Hall."),
  (['cruisers','coffee and classics'],'cars',['visitor','local','family'],False,"Classic cars and hot rods on Main Street — grab a coffee and admire the chrome."),
+ (['fly-in'],'cars',['visitor','local','family'],True,"The Lions Club's annual Fly-In BBQ in Trinity Center — barbecued tri-tip and chicken, a show 'n' shine, live music, and local vendors."),
  (['art walk'],'arts',['visitor','local','family'],True,"Weaverville's signature evening out — new gallery exhibits, receptions, music, and refreshments up and down Main Street."),
  (['line dancing'],'dance',['local','family'],False,"Free, all-ages line dancing — beginning and intermediate instruction."),
  (['chess'],'games',['local','family'],False,"Casual chess for all levels — bring a board or just pull up a chair."),
  (['bingo'],'bingo',['visitor','local','family'],False,"$5 a card for 16 games, cash prizes, up at the Trinity Center KOA."),
- (['karaoke'],'livemusic',['visitor','local'],False,"Grab the mic — a laid-back north-county night at the Coffee Creek Country Store."),
+ (['members-only karaoke'],'livemusic',['local'],False,"A members-only karaoke night for Trinity Players at the Performing Arts Center — free for members."),
+ (['karaoke'],'livemusic',['visitor','local'],False,"Grab the mic — a laid-back night at the Coffee Creek Country Store."),
  (['golf association'],'golf',['local'],False,"Weekly 18-hole tournament, weather permitting — open to any golfer with a handicap."),
  (['gymkhana','barrel race'],'rodeo',['local','family'],False,"Signups at 9, gymkhana at 10, barrel racing to follow — Trinity Horses and Long Ears."),
  (['ruth rodeo'],'rodeo',['visitor','local','family'],True,None),
@@ -155,6 +157,9 @@ def extract_where(detail):
     return clean(w)[:90]
 
 def make_desc(title, detail):
+    # Mechanical placeholder only. The weekly runbook requires the agent to rewrite
+    # every NEW / cat-only description in editorial voice; this just has to be a safe,
+    # complete sentence if one ever slips through.
     d=re.sub(r'\b\S+@\S+\b','',detail)          # emails
     d=re.sub(r'\b\d{3}[-.]\d{3}[-.]\d{4}\b','',d) # phones
     d=re.sub(r'\b(Info|Contact|Email|Call|Reserve|Signups?)\b.*?(?=(\.|$))','',d,flags=re.I)
@@ -255,8 +260,15 @@ ATMOVIES=('  { date:"__WSAT__", weekly:true, season:"year-round", for:["visitor"
  'desc:"First‑run films at Weaverville\'s restored 1939 Trinity Theatre — a This is Trinity landmark.", '
  'wx:null, info:"https://www.trinityjournal.com/calendar/", map:"Trinity Theatre, Main Street, Weaverville, CA 96093" }')
 
+# Clean display titles for the stable weekly fixtures (raw lines are run-on sentences).
+WEEKLY_TITLE=[('chess','Chess Club'),('bingo','Bingo'),('karaoke','Saturday Karaoke'),
+              ('farmers market','Weaverville Farmers Market'),
+              ('golf association','Trinity Alps Golf Association')]
 def weekly_obj(title,item,wsat):
     cat,aud,feat,rdesc,status=curate(title,item); label,icon,grad=CAT[cat]
+    tl=title.lower()
+    for k,nt in WEEKLY_TITLE:
+        if k in tl: title=nt; break
     # day + time
     low=item.lower(); dayname=None
     for name,idx in WD.items():
