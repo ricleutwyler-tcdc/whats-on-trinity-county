@@ -163,7 +163,9 @@ A short reminder-and-notice post, not a launch announcement. The calendar and si
 already known — this says "we refreshed it, here's what's coming."
 - 1 short line on what's new/ahead (name 2–4 real draws from this window).
 - 1 line that it's the community calendar, updated weekly, free to use and to list on.
-- The link: https://trinity-county-events-demo.netlify.app
+- The link: use this EXACT canonical URL — https://trinity-county-events-demo.netlify.app
+  NEVER a Gmail/redirect-wrapped version (anything like `https://www.google.com/url?q=...`).
+  If you copied the link from an email, strip it back to the canonical URL above.
 - Warm, local, no hype. 📅 and 👉 are fine; nothing heavier.
 
 ## Known constraints (don't rediscover these)
