@@ -75,6 +75,46 @@ PATTERNS = [
      "announces its own importance", re.I),
     (r"\bthe highest[- ]value (sequence|section|change|item)\b", "announces its own importance", re.I),
 
+    # ---- ranking the correspondent's contribution for them ----
+    # Added 4 Sep 2026. Ric had already banned this in the skill file
+    # ("Ranking his correspondent's answer for them") and it went out anyway,
+    # because nothing here could see it: "the monthly office hours are the most
+    # useful thing anyone has told me in two weeks of doing this."
+    (r"\bthe (single )?most (useful|valuable|important|helpful|interesting) "
+     r"thing (anyone|anybody|any \w+)\b", "ranks the correspondent's answer for them", re.I),
+    (r"\bthe best (thing|answer|reply|news|part) (anyone|anybody|I'?ve)\b",
+     "ranks the correspondent's answer for them", re.I),
+    (r"\bthe first [a-z ]{3,40} I'?ve been able to\b",
+     "superlative about our own work", re.I),
+    (r"\bin \w{2,12} of doing this\b", "narrating how long we've been at it", re.I),
+
+    # ---- claiming Ric personally holds or remembers something ----
+    # Added 4 Sep 2026. "it stays out of the listing and in my head" was written
+    # in Ric's voice and is not true: the record is in a file he did not write
+    # and does not carry. Never put the sender's memory or interior state in a
+    # sentence he will send. Say where the thing actually is, or say nothing.
+    (r"\bin my head\b", "claims Ric is holding it in memory — it is in a file", re.I),
+    (r"\bI'?ll (remember|keep (it|that|this) in mind|bear (it|that) in mind|"
+     r"hold onto (it|that))\b", "claims Ric will personally remember it", re.I),
+    (r"\b(stays|stayed|staying) with me\b|\bsticks with me\b",
+     "claims Ric's interior state", re.I),
+    (r"\bworth my knowing\b", "self-narrating, and claims his attention", re.I),
+
+    # ---- praise that carries no information ----
+    # Added 4 Sep 2026 with the two above. The common shape of every flourish
+    # Ric has cut: a sentence whose only content is how good he thinks
+    # something is. If a sentence carries no fact, no ask and no plain thanks,
+    # it should not be in a message going out over his name.
+    (r"\b(invaluable|incredibly helpful|so helpful|hugely helpful|"
+     r"tremendously|fantastic|amazing|wonderful|brilliant)\b",
+     "opinion adjective doing the work of a fact", re.I),
+    (r"\bI can'?t tell you how\b|\bmeans a (lot|great deal) to\b",
+     "effusive filler", re.I),
+    (r"\b(really|truly|genuinely|incredibly|extremely) (useful|helpful|good|"
+     r"important|valuable)\b", "intensifier propping up an opinion", re.I),
+    (r"\bexactly (what|the) [a-z ]{2,30} (needed|wanted|was after)\b",
+     "tells them how well they did", re.I),
+
     # ---- salesy ----
     (r"\ban easy yes\b|\bthe real money is\b|\bdwarfs\b", "salesy line", re.I),
     (r"\bno[- ]brainer\b|\blow[- ]hanging fruit\b", "salesy cliche", re.I),
