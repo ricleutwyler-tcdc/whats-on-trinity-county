@@ -115,6 +115,47 @@ PATTERNS = [
     (r"\bexactly (what|the) [a-z ]{2,30} (needed|wanted|was after)\b",
      "tells them how well they did", re.I),
 
+    # ---- idiom that is not his ----
+    # Added 5 Sep 2026. "I took your steer" went into a draft to Shasta
+    # College; Ric: "this does not sound like me". Clipped British-register
+    # idiom. Plain alternative: "we did it the way you suggested".
+    (r"\btook your steer\b|\byour steer\b", "idiom that is not Ric's", re.I),
+    (r"\bduly noted\b|\bnoted with thanks\b|\bpoint taken\b",
+     "stock acknowledgement, not his register", re.I),
+
+    # ---- pointing at a thing instead of naming it ----
+    # Added 5 Sep 2026. "Alex — we did it the way you suggested." Ric: 'we did
+    # "what"?' The recipient does not have our context, so a pronoun whose noun
+    # is not in the same sentence makes them guess. These are the shapes it
+    # takes most often; the general rule is in the gate's closing checklist,
+    # because not every case is pattern-shaped.
+    (r"\bwe (did|fixed|changed|handled|sorted|updated|redid) (it|that|this)\b",
+     "pronoun with no antecedent — name what changed", re.I),
+    (r"\b(it'?s|that'?s|this is) (done|sorted|handled|taken care of|all set)\b",
+     "pronoun with no antecedent — name what is done", re.I),
+    (r"\bwe took care of (it|that|this)\b",
+     "pronoun with no antecedent — name what was done", re.I),
+    (r"\bmade (the|that) change\b|\bmade the update\b",
+     "which change? name it", re.I),
+    (r"\bas (discussed|mentioned|agreed)\b(?! (below|above|in))",
+     "assumes the reader remembers — say the thing", re.I),
+
+    # ---- claiming Claude's work in Ric's first person ----
+    # Added 5 Sep 2026, and it was already rule 9 of delivering-work-to-ric
+    # before it shipped anyway: first person is for what Ric personally does;
+    # research, harvesting, building and drafting are Claude's and get credited
+    # to Claude, or to "we" for a decision TCDC made. Ric edited "I found it on
+    # the Business Training Center\'s Eventbrite while I was pulling your class
+    # schedule" to "Claude found it ... while it was pulling", and has asked
+    # for this more than once.
+    (r"\bI (found|pulled|checked|searched|scraped|harvested|compiled|verified|"
+     r"cross-checked|built|generated|drafted|crawled) \b",
+     "did Ric do this, or Claude? credit Claude, or say we", re.I),
+    (r"\bI (couldn'?t|could not|was unable to) (find|see|locate|track down)\b",
+     "Claude searched, not Ric — say Claude, or we", re.I),
+    (r"\bwhile I was (pulling|checking|reading|searching|going through)\b",
+     "Claude did this, not Ric", re.I),
+
     # ---- salesy ----
     (r"\ban easy yes\b|\bthe real money is\b|\bdwarfs\b", "salesy line", re.I),
     (r"\bno[- ]brainer\b|\blow[- ]hanging fruit\b", "salesy cliche", re.I),
@@ -131,6 +172,37 @@ PATTERNS = [
     # ---- overclaiming absence ----
     (r"[Tt]here'?s no [a-z ]{3,30} anywhere\b", "overclaims absence — say what wasn't found", 0),
     (r"\bNot on any page\b|\bNothing at all\b", "repeats the point for emphasis", 0),
+
+    # ---- narrating our editorial decisions to the recipient ----
+    # Added 5 Sep 2026. Ric cut this whole paragraph out of the Quintin reply
+    # before sending it:
+    #
+    #   "Two things I didn't publish. That you're an office of one until
+    #    October — that's staffing rather than services, and it won't be true
+    #    in a month. And the resource guide you attached, because it's your
+    #    document and we'd rather send people to you than reproduce it."
+    #
+    # Three failures in one paragraph, and the third is the general one.
+    # It tells the recipient what we considered and rejected — a list of
+    # non-events he did not ask for and cannot act on. It also explains our
+    # editorial policy to a man who attached a file to be helpful, when the
+    # answer to that is thanks. And it restates a reading of his own situation
+    # that he had already corrected once.
+    #
+    # An email to an organization reports what is on the site, asks for what
+    # we need, and thanks them. Our internal reasoning is ours.
+    (r"\b(I|[Ww]e) (didn'?t|did not|chose not to|decided not to|"
+     r"deliberately didn'?t) (publish|include|use|add|list|run)\b",
+     "the recipient does not need a list of what we left out", re.I),
+    (r"\b(Two|Three|Four|A couple of) things (I|we) (didn'?t|did not|left off|"
+     r"left out|held back)\b",
+     "narrating our editorial decisions — report what IS there", re.I),
+    (r"\bwe'?d rather (send|point|direct|refer)\b",
+     "explains our policy to someone who did not ask", re.I),
+    (r"\bbecause it'?s your (document|file|guide|material|content)\b",
+     "explains our policy to someone who did not ask", re.I),
+    (r"\bthat'?s\s+(staffing|internal|process|policy)\s+rather than\b",
+     "telling the recipient what their own situation means", re.I),
 
     # ---- all-caps callout labels — case-sensitive by design ----
     (r"^\*\*[A-Z][A-Z0-9 —:-]{9,}\*\*", "all-caps callout label", 0),
