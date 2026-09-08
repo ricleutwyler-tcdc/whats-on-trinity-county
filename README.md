@@ -2,7 +2,7 @@
 
 The public community-events site for Trinity County — a collaboration of the **Trinity County Community Development Corporation (TCDC)** and **The Trinity Journal**, part of the *This is Trinity* initiative.
 
-**Live site:** https://trinity-county-events-demo.netlify.app/
+**Live site:** https://events.trinitycommunitydev.org/
 (To move to a TCDC subdomain later, attach the subdomain to this same Netlify project so existing links keep working.)
 
 ## How it works
