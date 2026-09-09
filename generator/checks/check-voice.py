@@ -98,6 +98,19 @@ PATTERNS = [
      r"hold onto (it|that))\b", "claims Ric will personally remember it", re.I),
     (r"\b(stays|stayed|staying) with me\b|\bsticks with me\b",
      "claims Ric's interior state", re.I),
+
+    # ---- unprovable claims about the world, in our own voice ----
+    # Added 8 Sep 2026. A launch post said "Most of it is hard to find, and some
+    # of it never gets found." Ric: "example of saying things you shouldn't."
+    # Nobody measured either half. The site's whole promise is that it prints
+    # only what can be checked; the post introducing it has to keep the same
+    # promise. Say what the site does, not what the world is like.
+    (r"\b(never|rarely|seldom) gets? (found|seen|used|heard about|noticed)\b",
+     "unprovable claim about what happens in the world", re.I),
+    (r"\b(most|much) of (it|them|this) (is|are) (hard|difficult|impossible) to find\b",
+     "unprovable claim about how hard something is to find", re.I),
+    (r"\b(most|many) (people|owners|businesses) (don'?t|never) know\b",
+     "unprovable claim about what people know", re.I),
     (r"\bworth my knowing\b", "self-narrating, and claims his attention", re.I),
 
     # ---- praise that carries no information ----
