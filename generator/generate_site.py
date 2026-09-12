@@ -108,6 +108,7 @@ REGISTRY = [
  (['business fair'],'family',['local','family'],False,"Young entrepreneurs design, make, and sell their own products — a hands-on kids' market."),
  (['chamber music','performing arts center'],'music',['visitor'],True,None),
  (['mosaic','art & craft','festival of light'],'arts',['visitor','local','family'],False,None),
+ (['science on tap'],'community',['visitor','local'],False,"The county's Science on Tap talk series — an easy evening of science over a pint at Trinity County Brewing. 6 p.m."),
  (['brewing company','brewery'],'livemusic',['visitor','local'],False,"Live music at Trinity County Brewing — craft beer, food, and a local band. No cover."),
  (['festival','peddlers','bigfoot','hmong new year','salmon meets harvest','good times fair','mountain magic'],'festival',['visitor','local','family'],True,None),
 ]
