@@ -614,5 +614,26 @@ document.querySelectorAll('[data-icon]').forEach(el=>{
 
 render();
 </script>
+<script>
+/* Site traffic, counted by TCDC itself (Sep 12, 2026). Netlify Analytics keeps a rolling 30-day
+   window; this fires one request per page view to the Women Entrepreneurs Response Receiver,
+   which writes a row on the Traffic tab with s=events. No name, no IP, no cookie - only a random
+   id kept in localStorage so unique visitors can be counted. Ric's own browser is excluded by
+   opening the page once with ?me=ric. Lives in generator/template.html; index.html is rebuilt
+   from it weekly. */
+(function(){
+  try{
+    var q=new URLSearchParams(location.search);
+    if(q.get('me')==='ric'){ localStorage.setItem('we_v','ric'); }
+    var v=localStorage.getItem('we_v');
+    if(!v){ v=Math.random().toString(36).slice(2,12)+Date.now().toString(36); localStorage.setItem('we_v',v); }
+    var r=''; try{ r=document.referrer?new URL(document.referrer).host:''; }catch(e){}
+    if(r===location.host) r='';
+    var u='https://script.google.com/macros/s/AKfycbynGqyH2NIkpHh7J0BTA8D4Y7Amg12hzd0Q2iMlYU4MS_7nWpjU0MDc0AP69LOtJcbm/exec?hit=1&s=events'+
+      '&p='+encodeURIComponent(location.pathname)+'&v='+encodeURIComponent(v)+'&r='+encodeURIComponent(r);
+    var img=new Image(); img.src=u;
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
