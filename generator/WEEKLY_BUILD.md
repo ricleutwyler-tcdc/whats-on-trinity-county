@@ -162,6 +162,12 @@ brochure.
 A short reminder-and-notice post, not a launch announcement. The calendar and site are
 already known — this says "we refreshed it, here's what's coming."
 - 1 short line on what's new/ahead (name 2–4 real draws from this window).
+- **Check every date before you write it.** For each event you name, confirm its date
+  against the calendar AND against today. Never call an event "yesterday," "today," "this
+  weekend," "final day," or "next weekend" without checking today's date against the event's
+  actual date. A wrong "final day / last weekend" claim is exactly the kind of public error
+  a reader will correct in the comments. When unsure, name the date outright ("Sept 18–20")
+  instead of a relative day.
 - 1 line that it's the community calendar, updated weekly, free to use and to list on.
 - The link: use this EXACT canonical URL — https://events.trinitycommunitydev.org
   NEVER a Gmail/redirect-wrapped version (anything like `https://www.google.com/url?q=...`).
