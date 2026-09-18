@@ -46,7 +46,7 @@ def classify(title, detail):
     if has('festival','peddlers','bigfoot','hmong new year','summer festival','music festival','salmon meets harvest','good times fair'): return 'festival'
     if has('children','kids','youth','business fair'): return 'family'
     if has('line dancing'): return 'dance'
-    if has('cruisers','coffee and classics','classic','fly-in','show'): return 'cars'
+    if has('cruisers','coffee and classics','classic car','fly-in',"show 'n'",'show n shine','car show'): return 'cars'
     if has('craft fair','swap meet','yard sale','market','peddlers'): return 'market'
     if has('tournament','big ball','softball','bike race','mountain bike','witch brigade','homecoming'): return 'sports'
     if has('breakfast','dinner','soup kitchen','pancake','senior center','vfw','banquet','auction','grange'): return 'community'
@@ -91,11 +91,13 @@ REGISTRY = [
  (['six rivers senior'],'community',['local','family'],False,"A hearty community breakfast near Ruth Lake — an easy morning stop if you're down south."),
  (['soup kitchen'],'community',['local'],False,"A free community soup kitchen at the Douglas City Fire Station."),
  (['farmers market'],'market',['visitor','local','family'],False,"Local produce, prepared food, and makers at the Highland Art Center meadow."),
+ (['salmon meets harvest'],'festival',['visitor','local','family'],True,None),
  (['cook-off','cook off','chili cook','bake-off','bake off'],'community',['local','family'],False,None),
  (['craft fair','swap meet'],'market',['local','family'],False,"Browse, buy, and trade — the monthly craft fair and swap meet at the Hayfork VFW Hall."),
  (['cruisers','coffee and classics'],'cars',['visitor','local','family'],False,"Classic cars and hot rods on Main Street — grab a coffee and admire the chrome."),
  (['fly-in'],'cars',['visitor','local','family'],True,"The Lions Club's annual Fly-In BBQ in Trinity Center — barbecued tri-tip and chicken, a show 'n' shine, live music, and local vendors."),
  (['art walk'],'arts',['visitor','local','family'],True,"Weaverville's signature evening out — new gallery exhibits, receptions, music, and refreshments up and down Main Street."),
+ (['quilt show','quilt guild'],'arts',['visitor','local','family'],False,None),
  (['line dancing'],'dance',['local','family'],False,"Free, all-ages line dancing — beginning and intermediate instruction."),
  (['chess'],'games',['local','family'],False,"Casual chess for all levels — bring a board or just pull up a chair."),
  (['bingo'],'bingo',['visitor','local','family'],False,"$5 a card for 16 games, cash prizes, up at the Trinity Center KOA."),
