@@ -257,7 +257,9 @@ def ev_obj(ev):
     fields.append(f'wx:null, info:J, map:"{esc(where)}, Trinity County, CA"')
     return "  { "+", ".join(fields)+" }"
 
-# weekly-strip constant: the At-the-Movies card (site fixture, not from Wayne)
+# At-the-Movies weekly fixture (site fixture, not from Wayne).
+# Currently disabled — set SHOW_MOVIES = True to restore the card.
+SHOW_MOVIES = False
 ATMOVIES=('  { date:"__WSAT__", weekly:true, season:"year-round", for:["visitor","local","family"], '
  'dayLabel:"Weekly · Fri–Sun showings", cat:"Movies", icon:"film", grad:["#14564D","#0E3E37"], '
  'title:"At the Movies · The Trinity Theatre", where:"The Trinity Theatre, Main St., Weaverville", '
@@ -332,7 +334,8 @@ def main():
     in_window=dedup
 
     weekly_js=[weekly_obj(t,i,wsat) for (t,i) in weekly]
-    weekly_js.append(ATMOVIES.replace("__WSAT__",wsat))
+    if SHOW_MOVIES:
+        weekly_js.append(ATMOVIES.replace("__WSAT__",wsat))
     dated_js=[ev_obj(e) for e in in_window]
 
     events_block="const EVENTS = [\n  // ----- recurring weekly -----\n"+",\n".join(weekly_js)+",\n  // ----- dated -----\n"+",\n".join(dated_js)+"\n];"
