@@ -1,0 +1,4 @@
+# Community events not in The Trinity Journal calendar (added by hand from local sources).
+# Same line format as Wayne's dated "Calendar" lines: "Mon. DD: Title, details."
+# Past-dated lines are harmless — the builder only shows events inside the current ~2-week window.
+Sept. 27: Escape the Drama Trap, a free relationship-skills workshop with Leslie Gabriele, PhD, 2 to 4 p.m. at 1771 Main Street, Weaverville. Calm and defensive states, relational communication, and hands-on practice. All welcome.

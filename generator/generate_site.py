@@ -9,7 +9,7 @@ If anchor omitted, it is parsed from the calendar header ("... 8-07-26").
 Editorial note: auto-curation is mechanical (category/audience/featured by keyword rules;
 weather is always "forecast closer to the date"). Solid, but not hand-tuned.
 """
-import sys, re, datetime, json, html
+import sys, re, datetime, json, html, os
 
 MONTHS = {'jan':1,'feb':2,'mar':3,'march':3,'apr':4,'april':4,'may':5,'jun':6,'june':6,
           'jul':7,'july':7,'aug':8,'sep':9,'sept':9,'oct':10,'nov':11,'dec':12}
@@ -314,12 +314,39 @@ def horizon_cards(dated, we):
                      f'<div class="hz-where">{html.escape(where)}</div></div></div>')
     return "\n".join(cards)
 
+def parse_extra(text, year):
+    """Parse community 'extra' event lines ('Mon. DD: Title, details.') into dated dicts."""
+    out=[]
+    for s in text.splitlines():
+        s=s.strip()
+        if not s or s.startswith('#'): continue
+        m=re.match(r'([A-Za-z]+)\.?\s+(\d{1,2})(?:\s*[-–]\s*(\d{1,2}))?:\s*(.*)',s)
+        if not m: continue
+        mo=MONTHS.get(m.group(1).lower()[:4].rstrip('.')) or MONTHS.get(m.group(1).lower()[:3])
+        if not mo: continue
+        d1=int(m.group(2)); d2=int(m.group(3)) if m.group(3) else None
+        rest=m.group(4).strip()
+        title=clean(rest.split(',')[0].split('.')[0])
+        try: sd=datetime.date(year,mo,d1)
+        except ValueError: continue
+        ed=None
+        if d2:
+            try: ed=datetime.date(year,mo,d2)
+            except ValueError: ed=None
+        out.append(dict(date=sd,end=ed,title=title,detail=rest))
+    return out
+
 def main():
     cal=open(sys.argv[1],encoding='utf-8').read()
     tpl=open(sys.argv[2],encoding='utf-8').read()
     out=sys.argv[3]
     anchor,weekly,recurring,dated=parse(cal)
     if len(sys.argv)>4: anchor=datetime.date.fromisoformat(sys.argv[4])
+    # Merge community "extra" events not in Wayne's Journal calendar (generator/extra_events.txt).
+    # Same line format as the calendar's dated lines: "Mon. DD: Title, details."
+    _ep=os.path.join(os.path.dirname(os.path.abspath(__file__)),'extra_events.txt')
+    if os.path.exists(_ep):
+        dated=dated+parse_extra(open(_ep,encoding='utf-8').read(), anchor.year)
     ws=anchor; we=anchor+datetime.timedelta(days=15)
     # nearest Saturday for weekly card dates (sort anchor)
     wsat=(ws+datetime.timedelta(days=(5-ws.weekday())%7)).isoformat()
