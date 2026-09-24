@@ -63,6 +63,20 @@ PATTERNS = [
     (r"\bwhat this really means\b|\bhere'?s the thing\b", "consultant setup", re.I),
     (r"\bwedge product\b|\bearned media\b|\bwhite[- ]space\b", "jargon a non-marketer won't parse", re.I),
 
+    # ---- false-candor openers / narrating own writing ----
+    # Added 24 Sep 2026. Ric flagged "Being honest about it:" on a budget update
+    # ("remove the stuff that sounds like you and not me"). These announce
+    # sincerity instead of just saying the thing -- a Claude tell, not his voice.
+    # "to be honest" uses a negative lookahead so it does NOT flag a legitimate
+    # embedded "to be honest about what that means" -- only the throat-clearing opener.
+    (r"\bbeing honest about it\b|\bbeing honest with you\b|"
+     r"\bto be honest(?!\s+(?:about|that|regarding))\b|\bi'?ll be honest\b|"
+     r"\bif i'?m being honest\b|\bin all honesty\b|\btruth be told\b|\blet me be honest\b",
+     "false-candor opener -- just say the thing", re.I),
+    (r"(?:^|[.!?]\s+|\*\*\s*)(Honestly|Frankly),", "false-candor sentence opener", 0),
+    (r"\bi'?ll (say|state|put) (this|it) plainly\b|\bso which is it\b",
+     "narrating own writing", re.I),
+
     # ---- writerly / self-important framing ----
     (r"\bmy read on\b|\bmy take on\b", "self-important framing", re.I),
     (r"\bworth sitting with\b|\bthe part that stings\b", "writerly filler", re.I),

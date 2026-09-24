@@ -68,6 +68,37 @@ PATTERNS = [
     (r"\b(business|company) (isn'?t|is not) the problem\b", "grades the business"),
     (r"\byou'?ve got a (good|solid|real|great) business\b", "grades the business"),
     (r"\bthe business is (sound|solid|healthy|fine)\b", "grades the business"),
+
+    # Telling someone their own page is wrong. Added 23 Sep 2026, after a draft
+    # told Shasta College that Eventbrite "still shows 8:00 to 5:30" for the
+    # Trinity bootcamp. The page said no such thing: its agenda ran 08:00 AM to
+    # 07:00 PM, and 5:30 was the start of the last block, the pitch competition.
+    # Ric sent that to the college over his own name and it made him look
+    # careless about their work.
+    #
+    # ALLOWED_CONTEXT above treats a website as fair game because it is
+    # observable from outside. It is — if you actually opened it and read the
+    # whole of it. That is the hole this closes. The flag does not know whether
+    # you looked; it stops the sentence so that somebody does, and it fires
+    # whether the claim turns out right or wrong, because the cost of being
+    # wrong falls on Ric rather than on us.
+    #
+    # The fix is usually to cut the sentence. A question needs no premise about
+    # their page: "which should we go with?" beats "your page still shows X".
+    (r"\b(still|currently) (shows?|says?|lists?|has)\b",
+     "tells the recipient what their own page currently shows \u2014 open it and "
+     "read the whole page, or cut the premise and just ask the question"),
+    (r"\b(your|their|the) (page|site|website|listing|calendar|profile) "
+     r"(still )?(shows?|says?|lists?|gives?)\b",
+     "asserts what the recipient's own page says \u2014 open it and read the "
+     "whole page, or cut the premise and just ask the question"),
+    (r"\b(eventbrite|facebook|linkedin|google)\b[^.]{0,40}\b(still )?"
+     r"(shows?|says?|lists?)\b",
+     "asserts what a third-party page shows about the recipient \u2014 open it "
+     "and read the whole page before this goes out"),
+    (r"\bbut (your|their) (page|site|website|listing|flyer)\b",
+     "sets the recipient's own materials against each other \u2014 verify both, "
+     "and ask rather than correct"),
 ]
 
 
