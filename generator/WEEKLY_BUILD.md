@@ -105,6 +105,16 @@ Only the next ~7 days get filled; everything beyond keeps "Forecast closer to th
 Outlying-town events (Trinity Center, Hayfork, Hyampom, Ruth, Junction City) borrowing the
 Weaverville forecast are auto-tagged "· approx." — that's correct, leave it.
 
+### 5b. Flyer
+```
+python3 make_flyer.py index.html flyer.html <today YYYY-MM-DD>
+```
+Writes `flyer.html`, a one-page printable list of the next seven days with a QR code to the
+site (`flyer-qr.svg`; the address never changes, so the QR doesn't either). The site's
+"Print this week's flyer" button opens it. It uses the curated text as-is, so run it after
+curation and weather. Open it and check it fits one page; it shrinks its type when the week is
+busy. Hand `flyer.html` to Ric with `index.html` — it belongs in the repo root next to it.
+
 ### 6. Checkers
 ```
 python3 checks/check-claims.py index.html
@@ -143,12 +153,12 @@ Fix everything the reviewer flags, then move on. If you can't run a subagent, do
 yourself, slowly, reading the whole page — not just the parts you changed.
 
 ### 8. Hand it to Ric (no publishing)
-- **If the device bridge to Ric's Mac is available**: write `index.html` into
-  `/Users/Ric/Documents/GitHub/whats-on-trinity-county/index.html` (device_commit_files).
+- **If the device bridge to Ric's Mac is available**: write `index.html` and `flyer.html` into
+  `/Users/Ric/Documents/GitHub/whats-on-trinity-county/` (device_commit_files).
   It appears as an uncommitted change in GitHub Desktop.
 - **If the bridge is NOT available** (his Mac is closed): email him the finished
-  `index.html` as an attachment with one line — "save this over
-  whats-on-trinity-county/index.html, review in GitHub Desktop, and push."
+  `index.html` and `flyer.html` as attachments with one line — "save these over the two
+  files in whats-on-trinity-county, review in GitHub Desktop, and push."
 
 Either way, send Ric a short note: the window and event count, anything you had to judge,
 and the Facebook post (next step). Never state the site is updated — it isn't until he
