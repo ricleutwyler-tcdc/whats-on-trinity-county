@@ -106,11 +106,6 @@
   .chip-cat{background:var(--cc,#14564D);color:#fff}
   .chip-feat{background:#FBF1DC;border-color:#EBCB8B;color:#7A5208}
   .chip-aud{background:#F3EFE6;border-color:var(--line);color:#4F4A40}
-  /* Option B: quiet cream card, thin category stripe on top, dark title. */
-  body[data-cards="b"] .card{background:#FFFDF8}
-  body[data-cards="b"] .cband{background:transparent;color:var(--ink);border-top:5px solid var(--cc,#14564D);padding:15px 18px 2px}
-  body[data-cards="b"] .cband .when{color:var(--slate)}
-  body[data-cards="b"] .cband .title{color:var(--ink)}
 
   .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
   .when{font-size:12.5px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
@@ -597,10 +592,6 @@ const searchEl = document.getElementById('search');
 const searchClear = document.getElementById('searchClear');
 searchEl.addEventListener('input', ()=>{ query = norm(searchEl.value.trim()); searchClear.hidden = !searchEl.value; render(); });
 searchClear.addEventListener('click', ()=>{ searchEl.value=''; searchEl.dispatchEvent(new Event('input')); searchEl.focus(); });
-
-// Card look: A = category colour band (default), B = cream card with a category stripe.
-// ?cards=a / ?cards=b previews either one.
-(function(){ const v=new URLSearchParams(location.search).get('cards'); document.body.dataset.cards = (v==='b'?'b':'a'); })();
 
 document.querySelectorAll('[data-icon]').forEach(el=>{
   const sz = el.classList.contains('band-btn') || el.classList.contains('hero-link') ? 17 : 15;
