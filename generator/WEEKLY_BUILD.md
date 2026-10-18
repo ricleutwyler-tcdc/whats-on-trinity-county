@@ -75,7 +75,7 @@ exact pattern (match each event object by a unique title substring; rewrite `des
   with the whole promo sentence → `Performer: "Show"`).
 - **Category sanity** — a fly-in / show 'n' shine is **Cars**, not Live Music; a
   members-only PAC event is not the Coffee Creek karaoke; a fundraiser banquet is
-  **Community**. When in doubt, the rubric doc wins; if you make a new call, note it for
+  **Food & Fundraisers**; a hike or cleanup is **Outdoors**; a talk or class is **Talks & Learning**. When in doubt, the rubric doc wins; if you make a new call, note it for
   Ric so it can be folded into the rubric.
 - **Audience** — members-only → locals only; a countywide festival → visitor/local/family.
 
@@ -129,7 +129,7 @@ Before Ric sees anything, run a fresh reviewer over the finished page — a suba
 tool) is ideal, so the reviewer isn't the author. Give it the rendered page text and this
 explicit checklist, and have it return a list of issues (or "clean"):
 - Every event's category matches the rubric (fly-in/show 'n' shine = Cars; members-only PAC
-  event ≠ Coffee Creek karaoke; fundraiser banquet = Community; concert = Music).
+  event ≠ Coffee Creek karaoke; fundraiser banquet = Food & Fundraisers; hike/cleanup = Outdoors; talk/class = Talks & Learning; concert = Music).
 - No description echoes the raw calendar line; each is one or two warm, plain sentences in
   Ric's voice — no buzzwords, no "not X, it's Y", no salesy lines.
 - No truncated venue ("9 a", "260 S") and no run-on or mid-quote title.

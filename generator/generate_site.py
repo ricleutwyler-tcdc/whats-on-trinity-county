@@ -19,37 +19,46 @@ DOW_ABBR = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
 
 J = "https://www.trinityjournal.com/calendar/"
 
-# category -> (label, icon, gradient[2.0])
+# category -> (label, icon, fill). The page colours each card from CAT_FILL in template.html,
+# keyed by label; the fill here mirrors it and is only the fallback. A new label needs a
+# CAT_FILL entry too (checks/check-colours.py). 'livemusic' shares the "Music" label.
 CAT = {
- 'music':   ("Music","music",["#14564D","#0E3E37"]),
- 'livemusic':("Live Music","livemusic",["#D6603A","#C0562F"]),
- 'rodeo':   ("Rodeo","rodeo",["#C0562F","#6b3418"]),
- 'arts':    ("Arts","arts",["#C0562F","#7A3F20"]),
- 'community':("Community","coffee",["#D6603A","#8a4b1e"]),
- 'market':  ("Market","market",["#4E9E92","#14564D"]),
- 'sports':  ("Sports","trophy",["#14564D","#1E7A6E"]),
- 'family':  ("Family","family",["#2E8E90","#14564D"]),
- 'dance':   ("Dance","music",["#C0562F","#6B3418"]),
- 'cars':    ("Cars","cars",["#2E8E90","#1E7A6E"]),
- 'festival':("Festival","sun",["#1E7A6E","#14564D"]),
- 'games':   ("Games","chess",["#5a6b62","#2c3a32"]),
- 'bingo':   ("Bingo","grid",["#2E8E90","#14564D"]),
- 'golf':    ("Golf","golf",["#14564D","#1E7A6E"]),
+ 'music':   ("Music","music",["#7D3F52","#7D3F52"]),
+ 'livemusic':("Music","livemusic",["#7D3F52","#7D3F52"]),
+ 'rodeo':   ("Rodeo","rodeo",["#8A6E2F","#8A6E2F"]),
+ 'arts':    ("Arts","arts",["#4A4E8C","#4A4E8C"]),
+ 'talks':   ("Talks & Learning","trivia",["#4A4E8C","#4A4E8C"]),
+ 'food':    ("Food & Fundraisers","food",["#C05431","#C05431"]),
+ 'community':("Community","coffee",["#C05431","#C05431"]),
+ 'outdoors':("Outdoors","mountains",["#14564D","#14564D"]),
+ 'market':  ("Market","market",["#2E7D4F","#2E7D4F"]),
+ 'sports':  ("Sports","trophy",["#14564D","#14564D"]),
+ 'family':  ("Family","family",["#2F5D7C","#2F5D7C"]),
+ 'dance':   ("Dance","music",["#4A4E8C","#4A4E8C"]),
+ 'cars':    ("Cars","cars",["#8E1E2E","#8E1E2E"]),
+ 'festival':("Festival","sun",["#8A6E2F","#8A6E2F"]),
+ 'games':   ("Games","chess",["#2E2A22","#2E2A22"]),
+ 'bingo':   ("Bingo","grid",["#2E2A22","#2E2A22"]),
+ 'golf':    ("Golf","golf",["#14564D","#14564D"]),
 }
 def classify(title, detail):
     t = (title+" "+detail).lower()
     def has(*ks): return any(k in t for k in ks)
     if has('chamber music','symphony','concert','planets','matinee') and not has('brewery'): return 'music'
     if has('rodeo','bull-a-rama','gymkhana','barrel race'): return 'rodeo'
-    if has('art walk','artists in action','mosaic','art & craft','art and craft','festival of light'): return 'arts'
+    if has('art walk','artists in action','mosaic','art & craft','art and craft','festival of light','scratchboard','painting','pottery','gallery'): return 'arts'
     if has('brewery','brewing','live at the brewery','band','singer','songwriter','sleepbomb','blacksage','whiskey kronic','dyar','heart & soul','tommy b','karaoke') and has('brewery','brewing','band','music','live','pm','p.m','cover'): return 'livemusic'
     if has('festival','peddlers','bigfoot','hmong new year','summer festival','music festival','salmon meets harvest','good times fair'): return 'festival'
-    if has('children','kids','youth','business fair'): return 'family'
+    if has('children','kids','youth','business fair','candy giveaway','trick-or-treat','trick or treat'): return 'family'
     if has('line dancing'): return 'dance'
     if has('cruisers','coffee and classics','classic car','fly-in',"show 'n'",'show n shine','car show'): return 'cars'
     if has('craft fair','swap meet','yard sale','market','peddlers'): return 'market'
     if has('tournament','big ball','softball','bike race','mountain bike','witch brigade','homecoming'): return 'sports'
-    if has('breakfast','dinner','soup kitchen','pancake','senior center','vfw','banquet','auction','grange'): return 'community'
+    if has('hike','nature walk','trailhead','cleanup','clean-up','trail day','birding','haunted forest'): return 'outdoors'
+    if has('breakfast','dinner','soup kitchen','pancake','bake sale','cook-off','cookoff','chili','banquet','auction',
+           'fundraiser','benefit','bunco','tip-a-cop','raffle'): return 'food'
+    if has(' talk','lecture','presents','forum','class ','classes','workshop','on tap','master gardener','seminar'): return 'talks'
+    if has('senior center','vfw','grange'): return 'food'
     if has('bingo'): return 'bingo'
     if has('chess'): return 'games'
     if has('live music','music'): return 'livemusic'
@@ -61,12 +70,13 @@ def audience(title, detail, cat):
     aud=set()
     if cat in ('music','livemusic','rodeo','festival','arts') or has('brewery','resort','festival','rodeo','concert','art walk','fly-in','banquet'):
         aud.add('visitor')
-    if cat in ('community','sports','dance','games','bingo','market','cars') or has('senior','vfw','church','grange','club','local','tournament','gymkhana','homecoming','soup kitchen','chamber of commerce'):
+    if cat in ('community','food','talks','outdoors','sports','dance','games','bingo','market','cars') or has('senior','vfw','church','grange','club','local','tournament','gymkhana','homecoming','soup kitchen','chamber of commerce'):
         aud.add('local')
     if has('children','kids','youth','family','all ages','all-ages','pancake','fair','carol','santa','christmas','fireworks') or cat=='family':
         aud.add('family')
     if has('gymkhana','barrel race'): aud.discard('visitor'); aud.add('local')
-    if cat=='community' and has('breakfast','dinner','pancake','fair'): aud.add('family')
+    if cat in ('community','food') and has('breakfast','dinner','pancake','fair'): aud.add('family')
+    if cat=='outdoors': aud.add('family')
     if cat in ('sports','market') and 'family' not in aud: aud.add('family')
     if cat=='family': aud.add('local')
     if not aud: aud.add('local')
@@ -85,14 +95,16 @@ def is_featured(title, detail, cat):
 # Known-Events Registry (mirrors the Drive rubric). First match wins; order = specific -> general.
 # (keywords_any, category, audience, featured, locked_desc_or_None)
 REGISTRY = [
- (['drive-through dinner','drive through dinner'],'community',['local','family'],False,"The senior center's monthly drive-through dinner in Hayfork. $15 adult, $7 child."),
- (['senior center breakfast'],'community',['local','family'],False,"The senior center's monthly breakfast in Hayfork. $15 adult, $7 child."),
- (['vfw breakfast'],'community',['local','family'],False,"Third-Saturday breakfasts at both posts — Hayfork ($15) and Weaverville ($12)."),
- (['six rivers senior'],'community',['local','family'],False,"A hearty community breakfast near Ruth Lake — an easy morning stop if you're down south."),
- (['soup kitchen'],'community',['local'],False,"A free community soup kitchen at the Douglas City Fire Station."),
+ (['drive-through dinner','drive through dinner'],'food',['local','family'],False,"The senior center's monthly drive-through dinner in Hayfork. $15 adult, $7 child."),
+ (['senior center breakfast'],'food',['local','family'],False,"The senior center's monthly breakfast in Hayfork. $15 adult, $7 child."),
+ (['vfw breakfast'],'food',['local','family'],False,"Third-Saturday breakfasts at both posts — Hayfork ($15) and Weaverville ($12)."),
+ (['six rivers senior'],'food',['local','family'],False,"A hearty community breakfast near Ruth Lake — an easy morning stop if you're down south."),
+ (['soup kitchen'],'food',['local'],False,"A free community soup kitchen at the Douglas City Fire Station."),
  (['farmers market'],'market',['visitor','local','family'],False,"Local produce, prepared food, and makers at the Highland Art Center meadow."),
  (['salmon meets harvest'],'festival',['visitor','local','family'],True,None),
- (['cook-off','cook off','chili cook','bake-off','bake off'],'community',['local','family'],False,None),
+ (['cook-off','cook off','chili cook','bake-off','bake off'],'food',['local','family'],False,None),
+ (['bake sale','bunco','tip-a-cop'],'food',['local','family'],False,None),
+ (['master gardener','calmatters'],'talks',['local'],False,None),
  (['craft fair','swap meet'],'market',['local','family'],False,"Browse, buy, and trade — the monthly craft fair and swap meet at the Hayfork VFW Hall."),
  (['cruisers','coffee and classics'],'cars',['visitor','local','family'],False,"Classic cars and hot rods on Main Street — grab a coffee and admire the chrome."),
  (['fly-in'],'cars',['visitor','local','family'],True,"The Lions Club's annual Fly-In BBQ in Trinity Center — barbecued tri-tip and chicken, a show 'n' shine, live music, and local vendors."),
@@ -110,7 +122,7 @@ REGISTRY = [
  (['business fair'],'family',['local','family'],False,"Young entrepreneurs design, make, and sell their own products — a hands-on kids' market."),
  (['chamber music','performing arts center'],'music',['visitor'],True,None),
  (['mosaic','art & craft','festival of light'],'arts',['visitor','local','family'],False,None),
- (['science on tap'],'community',['visitor','local'],False,"The county's Science on Tap talk series — an easy evening of science over a pint at Trinity County Brewing. 6 p.m."),
+ (['science on tap'],'talks',['visitor','local'],False,"The county's Science on Tap talk series — an easy evening of science over a pint at Trinity County Brewing. 6 p.m."),
  (['brewing company','brewery'],'livemusic',['visitor','local'],False,"Live music at Trinity County Brewing — craft beer, food, and a local band. No cover."),
  (['festival','peddlers','bigfoot','hmong new year','salmon meets harvest','good times fair','mountain magic'],'festival',['visitor','local','family'],True,None),
 ]
