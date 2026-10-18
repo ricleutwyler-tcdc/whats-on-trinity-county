@@ -122,6 +122,11 @@
   .btn-info:hover{background:var(--forest-2)}
   .btn-map{background:#fff;color:var(--forest);border-color:var(--moss)}
   .btn-map:hover{background:#eef4f0}
+  .cal{margin-top:10px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:13px;color:var(--slate)}
+  .cal button{font:inherit;font-weight:650;color:var(--forest);background:none;border:0;padding:4px 0;cursor:pointer;
+              text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--moss)}
+  .cal button:hover{color:var(--forest-2)}
+  .cal-opts{display:inline-flex;gap:12px;white-space:nowrap}
   .empty{grid-column:1/-1;text-align:center;color:var(--slate);padding:48px 0;font-size:15px}
   .feat-label{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);
               display:flex;align-items:center;gap:5px;margin-bottom:6px}
@@ -591,8 +596,69 @@ function card(e){
         <a class="btn btn-info" href="${e.info}" target="_blank" rel="noopener">More info ↗</a>
         <a class="btn btn-map" href="${mapUrl(e.map)}" target="_blank" rel="noopener">Directions</a>
       </div>
+      <div class="cal">${svg('calendar',14,1.8)} Add to my calendar:
+        <span class="cal-opts"><button type="button" data-cal="ics" data-ev="${EVENTS.indexOf(e)}">Apple / Outlook</button>
+        <button type="button" data-cal="google" data-ev="${EVENTS.indexOf(e)}">Google</button></span>
+      </div>
     </div>
   </article>`;
+}
+
+// Add to my calendar: times come from the card's dayLabel ("Fri · Oct 16 · 7–9 PM"), in Pacific time.
+// No time on the card → an all-day entry; no end time → two hours.
+const MON = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+function calTimes(e){
+  const ymd = e.date.replace(/-/g,'');
+  const pad = n => String(n).padStart(2,'0');
+  const range = e.dayLabel.match(/[A-Z][a-z]{2} (\d{1,2})–(\d{1,2})$/);   // "Fri–Sun · Aug 7–9"
+  const t = e.dayLabel.match(/(\d{1,2})(?::(\d{2}))?(?:–(\d{1,2})(?::(\d{2}))?)? (AM|PM)$/);
+  if(!t){
+    const d = new Date(e.date+'T12:00:00');
+    d.setDate(d.getDate() + (range ? (+range[2] - +range[1]) : 0) + 1);
+    return {allDay:true, start:ymd, end:d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())};
+  }
+  const h24 = h => (t[5]==='PM' ? (h%12)+12 : h%12);
+  let eh = t[3] ? h24(+t[3]) : null, em = +(t[4]||0);
+  let sh = h24(+t[1]), sm = +(t[2]||0);
+  if(eh!==null && sh*60+sm > eh*60+em) sh -= 12;                       // "11–2 PM" starts in the morning
+  if(eh===null){ eh = sh+2; em = sm; }
+  const end = eh>=24 ? {h:23,m:59} : {h:eh,m:em};
+  return {allDay:false, start:ymd+'T'+pad(sh)+pad(sm)+'00', end:ymd+'T'+pad(end.h)+pad(end.m)+'00'};
+}
+function plain(s){ const d=document.createElement('div'); d.innerHTML=s; return d.textContent; }
+function icsText(e){
+  const c = calTimes(e), x = s => plain(s).replace(/\\/g,'\\\\').replace(/[,;]/g,m=>'\\'+m).replace(/\n/g,'\\n');
+  const when = c.allDay ? ['DTSTART;VALUE=DATE:'+c.start,'DTEND;VALUE=DATE:'+c.end]
+                        : ['DTSTART;TZID=America/Los_Angeles:'+c.start,'DTEND;TZID=America/Los_Angeles:'+c.end];
+  const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//TCDC//What\'s On in Trinity County//EN','CALSCALE:GREGORIAN',
+    'BEGIN:VTIMEZONE','TZID:America/Los_Angeles',
+    'BEGIN:DAYLIGHT','TZOFFSETFROM:-0800','TZOFFSETTO:-0700','TZNAME:PDT','DTSTART:19700308T020000','RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU','END:DAYLIGHT',
+    'BEGIN:STANDARD','TZOFFSETFROM:-0700','TZOFFSETTO:-0800','TZNAME:PST','DTSTART:19701101T020000','RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU','END:STANDARD',
+    'END:VTIMEZONE','BEGIN:VEVENT',
+    'UID:'+e.date+'-'+plain(e.title).toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,40)+'@events.trinitycommunitydev.org',
+    'DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z', ...when,
+    'SUMMARY:'+x(e.title), 'LOCATION:'+x(e.map), 'DESCRIPTION:'+x(e.desc+'\n\nMore info: '+e.info+'\nFrom What\'s On in Trinity County: https://events.trinitycommunitydev.org'),
+    'URL:'+e.info, 'END:VEVENT','END:VCALENDAR'];
+  // fold lines over 74 characters, as the calendar format asks
+  return lines.map(l=>l.length<=74 ? l : l.match(/.{1,73}/g).join('\r\n ')).join('\r\n')+'\r\n';
+}
+function googleCalUrl(e){
+  const c = calTimes(e);
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text='+encodeURIComponent(plain(e.title)) + '&dates='+c.start+'/'+c.end
+    + (c.allDay?'':'&ctz=America/Los_Angeles')
+    + '&details='+encodeURIComponent(plain(e.desc)+'\n\nMore info: '+e.info)
+    + '&location='+encodeURIComponent(plain(e.map));
+}
+function addToCalendar(ev){
+  const b = ev.target.closest('[data-cal]'); if(!b) return;
+  const e = EVENTS[+b.dataset.ev]; if(!e) return;
+  if(b.dataset.cal==='google'){ window.open(googleCalUrl(e),'_blank','noopener'); return; }
+  const url = URL.createObjectURL(new Blob([icsText(e)],{type:'text/calendar;charset=utf-8'}));
+  const a = document.createElement('a');
+  a.href = url; a.download = plain(e.title).replace(/[^\w\s-]/g,'').trim().slice(0,50).replace(/\s+/g,'-')+'.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
 }
 
 function matchAud(e){ return audState==='all' || e.for.includes(audState); }
@@ -653,6 +719,7 @@ document.getElementById('whenFilters').addEventListener('click', ev=>{
   b.classList.add('active'); whenState = b.dataset.when; render();
 });
 
+grid.addEventListener('click', addToCalendar);
 const searchEl = document.getElementById('search');
 const searchClear = document.getElementById('searchClear');
 searchEl.addEventListener('input', ()=>{ query = norm(searchEl.value.trim()); searchClear.hidden = !searchEl.value; render(); });
