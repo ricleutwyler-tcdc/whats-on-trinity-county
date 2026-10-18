@@ -105,7 +105,11 @@ Weaverville forecast are auto-tagged "· approx." — that's correct, leave it.
 ```
 python3 checks/check-claims.py index.html
 python3 checks/check-voice.py  index.html
+python3 checks/check-colours.py index.html
 ```
+`check-colours.py` checks the card category colours (`CAT_FILL` in the template): white text
+clears 4.5:1 on every fill, no two fills closer than ΔE 20, at most nine fills (Brand 2.0 §2a).
+A new category with no entry in `CAT_FILL` shows in Deep Teal; add it there if it needs its own colour.
 Fix real hits. The only known false positive is the CSS property `white-space:nowrap`
 (inside `<style>`) — not the marketing term. Do not rewrite correct CSS to satisfy it.
 

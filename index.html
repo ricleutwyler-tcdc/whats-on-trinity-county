@@ -79,21 +79,33 @@
   .filter.active{background:var(--forest);border-color:var(--forest);color:#fff}
   .aud .filter.active{background:var(--gold);border-color:var(--gold);color:#2E2A22}
   .count{margin-left:auto;font-size:13px;color:var(--slate);font-weight:600}
+  .ctl-grid{display:grid;grid-template-columns:1fr minmax(260px,340px);gap:14px 28px;align-items:end}
+  .search{position:relative;display:flex;align-items:center}
+  .search>span{position:absolute;left:13px;display:flex;color:var(--slate);pointer-events:none}
+  .search input{font:inherit;font-size:16px;width:100%;padding:8px 14px 8px 38px;border:1px solid var(--line);
+                border-radius:999px;background:var(--card);color:var(--ink)}
+  .search input:focus{outline:2px solid var(--forest);outline-offset:1px;border-color:var(--forest)}
+  .search input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+  .search-clear{position:absolute;right:7px;width:28px;height:28px;border:0;border-radius:999px;background:#F3EFE6;
+                color:var(--slate);font:inherit;font-size:17px;line-height:1;cursor:pointer}
+  .search-clear:hover{background:var(--line);color:var(--ink)}
+  /* Phones: the filters plus search are too tall to stay pinned, so the bar scrolls with the page. */
+  @media(max-width:760px){.ctl-grid{grid-template-columns:1fr;gap:12px}.controls{position:static}}
 
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px;margin-top:24px}
   .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
         box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .16s,box-shadow .16s}
   .card:hover{transform:translateY(-3px);box-shadow:0 4px 10px rgba(28,38,32,.10),0 18px 40px rgba(28,38,32,.14)}
-  .thumb{position:relative;height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .thumb .fallback{color:#fff;opacity:.95;filter:drop-shadow(0 2px 6px rgba(0,0,0,.22))}
-  .tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.94);color:var(--forest);
-       font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:999px;z-index:2}
-  .wx{position:absolute;top:12px;right:12px;background:rgba(28,38,32,.82);color:#fff;font-size:12px;font-weight:600;
-      padding:5px 10px;border-radius:999px;display:flex;align-items:center;gap:5px;backdrop-filter:blur(4px);z-index:2}
-  .wx.hot{background:rgba(192,73,43,.92)}
-  .pills{position:absolute;bottom:11px;left:12px;display:flex;gap:6px;z-index:2}
-  .pill{font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:4px 8px;border-radius:999px;
-        color:#fff;background:rgba(28,38,32,.60);backdrop-filter:blur(4px);display:inline-flex;gap:4px;align-items:center}
+  /* Card head: category colour band with the date and title. --cc is the category fill (CAT_FILL below). */
+  .cband{padding:16px 18px 15px;background:var(--cc,#14564D);color:#fff}
+  .cband .when{color:#fff;margin-bottom:4px}
+  .cband .title{color:#fff;font-size:22px;line-height:1.2;margin:0}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+  .chip{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:999px;
+        display:inline-flex;gap:4px;align-items:center;line-height:1.3;border:1px solid transparent}
+  .chip-cat{background:var(--cc,#14564D);color:#fff}
+  .chip-feat{background:#FBF1DC;border-color:#EBCB8B;color:#7A5208}
+  .chip-aud{background:#F3EFE6;border-color:var(--line);color:#4F4A40}
 
   .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
   .when{font-size:12.5px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
@@ -102,6 +114,7 @@
   .where .ic{margin-top:1px}
   .desc{font-size:14px;color:#3A3733;margin:8px 0 0}
   .wx-line{font-size:12.5px;color:var(--slate);margin-top:10px;display:flex;align-items:center;gap:6px}
+  .wx-line.hot{color:#A63E22}
   .actions{margin-top:16px;display:flex;gap:9px}
   .btn{flex:1;text-align:center;font-size:13.5px;font-weight:650;padding:9px 10px;border-radius:10px;text-decoration:none;
        border:1px solid transparent;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
@@ -110,7 +123,6 @@
   .btn-map{background:#fff;color:var(--forest);border-color:var(--moss)}
   .btn-map:hover{background:#eef4f0}
   .empty{grid-column:1/-1;text-align:center;color:var(--slate);padding:48px 0;font-size:15px}
-  .card.feat{border-top:3px solid var(--amber-2)}
   .feat-label{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);
               display:flex;align-items:center;gap:5px;margin-bottom:6px}
   .weekly-sec{margin-top:38px}
@@ -121,10 +133,10 @@
                border:1px solid rgba(196,127,42,.28);padding:3px 9px;border-radius:999px}
   .weekly-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
   .mini{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
-        border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+        border-radius:14px;padding:14px 16px 14px 18px;box-shadow:inset 4px 0 0 var(--cc,#14564D),var(--shadow)}
   .mini-ic{flex:none;width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff}
   .mini-body{min-width:0}
-  .mini-day{font-size:11.5px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.04em}
+  .mini-day{font-size:11.5px;font-weight:700;color:var(--cc,#14564D);text-transform:uppercase;letter-spacing:.04em}
   .mini-title{font-size:15.5px;font-weight:700;margin:2px 0;line-height:1.2}
   .mini-where{font-size:12.5px;color:var(--slate)}
   .mini-links{margin-top:7px;font-size:12.5px;font-weight:650}
@@ -291,7 +303,8 @@
 </header>
 
 <div class="controls">
-  <div class="controls-inner">
+  <div class="controls-inner ctl-grid">
+   <div>
     <p class="ctl-label">Who's this for</p>
     <div class="row aud" id="audFilters">
       <button class="filter active" data-aud="all">Everyone</button>
@@ -307,6 +320,11 @@
       <button class="filter" data-when="nextweek">Next week</button>
       <span class="count" id="count"></span>
     </div>
+   </div>
+   <div>
+    <label class="ctl-label" for="search" style="display:block">Search</label>
+    <div class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Town, event or keyword" aria-label="Search events by title, place or description" autocomplete="off" enterkeyhint="search"><button type="button" class="search-clear" id="searchClear" aria-label="Clear search" hidden>×</button></div>
+   </div>
   </div>
 </div>
 
@@ -421,11 +439,27 @@ const ICONS = {
   water:'<path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>',
   plus:'<path d="M12 5v14M5 12h14"/>',
   external:'<path d="M14 4h6v6"/><path d="M20 4l-8 8"/><path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>',
   star:'<path fill="currentColor" stroke="none" d="M12 17.3l-6.16 3.7 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63 7.19.61-5.48 4.73 1.64 7.03z"/>'
 };
 function svg(key, size, sw){ size=size||16; sw=sw||1.8;
   return '<svg class="ic" width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+sw+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICONS[key]||'')+'</svg>'; }
 
+// Card colour per category: the Brand 2.0 §2a section fills (white label clears 4.5:1 on each,
+// every pair at least ΔE 20 apart; checks/check-colours.py verifies). Nine fills, the §2a ceiling.
+// A label like "Arts · Workshop" uses its first part; anything unlisted falls back to Deep Teal.
+const CAT_FILL = {
+  'Community':'#C05431',                                   // Deep Rust
+  'Music':'#7D3F52', 'Live Music':'#7D3F52', 'Karaoke':'#7D3F52', // Trades Plum
+  'Arts':'#4A4E8C', 'Dance':'#4A4E8C',                     // Safety Indigo
+  'Festival':'#8A6E2F', 'Rodeo':'#8A6E2F',                 // Working Bronze
+  'Market':'#2E7D4F',                                      // Advisor Green
+  'Sports':'#14564D', 'Golf':'#14564D',                    // Deep Teal
+  'Family':'#2F5D7C',                                      // Agency Blue
+  'Cars':'#8E1E2E',                                        // Ember Red
+  'Games':'#2E2A22', 'Bingo':'#2E2A22', 'Movies':'#2E2A22' // Charcoal
+};
+function catFill(e){ return CAT_FILL[(e.cat||'').split(' · ')[0]] || '#14564D'; }
 const TAG = {visitor:{l:'Visitors',ic:'visitor'}, local:{l:'Locals',ic:'local'}, family:{l:'Family',ic:'family'}};
 const J = "https://www.trinityjournal.com/calendar/";
 
@@ -466,29 +500,25 @@ const grid = document.getElementById('grid');
 const weeklyGrid = document.getElementById('weeklyGrid');
 const weeklySec = document.getElementById('weeklySec');
 const countEl = document.getElementById('count');
-let audState = 'all', whenState = 'all';
+let audState = 'all', whenState = 'all', query = '';
 
 function mapUrl(q){ return "https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q); }
 
 function card(e){
-  const grad = `linear-gradient(135deg, ${e.grad[0]}, ${e.grad[1]})`;
-  const pills = e.for.map(t=>`<span class="pill">${svg(TAG[t].ic,12,1.9)} ${TAG[t].l}</span>`).join('');
-  const wxBadge = e.wx ? `<span class="wx${e.wx.hot?' hot':''}">${svg(e.wx.hot?'heat':'sun',14,1.9)} ${e.wx.hi}°</span>` : '';
+  const chips = `<span class="chip chip-cat">${e.cat}</span>`
+    + (e.feat?`<span class="chip chip-feat">${svg('star',11,2)} Featured</span>`:'')
+    + e.for.map(t=>`<span class="chip chip-aud">${svg(TAG[t].ic,12,1.9)} ${TAG[t].l}</span>`).join('');
   const wxLine = e.wx
-    ? `<div class="wx-line">${svg('sun',14,1.8)} Forecast: ${e.wx.hi}° / ${e.wx.lo}°F · ${e.wx.txt}</div>`
+    ? `<div class="wx-line${e.wx.hot?' hot':''}">${svg(e.wx.hot?'heat':'sun',14,1.8)} Forecast: ${e.wx.hi}° / ${e.wx.lo}°F · ${e.wx.txt}</div>`
     : `<div class="wx-line">${svg('calendar',14,1.8)} Forecast closer to the date</div>`;
   return `
-  <article class="card${e.feat?' feat':''}">
-    <div class="thumb" style="background:${grad}">
-      <div class="fallback">${svg(e.icon,46,1.5)}</div>
-      ${wxBadge}
-      <div class="pills">${pills}</div>
-    </div>
-    <span class="tag">${e.cat}</span>
-    <div class="body">
-      ${e.feat?`<div class="feat-label">${svg('star',13,2)} Featured</div>`:''}
+  <article class="card${e.feat?' feat':''}" style="--cc:${catFill(e)}">
+    <div class="cband">
       <div class="when">${e.dayLabel}</div>
       <h3 class="title">${e.title}</h3>
+    </div>
+    <div class="body">
+      <div class="chips">${chips}</div>
       <p class="where">${svg('pin',15,1.8)} <span>${e.where}</span></p>
       <p class="desc">${e.desc}</p>
       ${wxLine}
@@ -501,6 +531,14 @@ function card(e){
 }
 
 function matchAud(e){ return audState==='all' || e.for.includes(audState); }
+// Search: every typed word must appear in the title, place, description or category.
+function norm(s){ return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[‘’]/g,"'"); }
+function matchSearch(e){
+  if(!query) return true;
+  const hay = norm([e.title,e.where,e.desc,e.cat].join(' '));
+  return query.split(/\s+/).every(w=>hay.includes(w));
+}
+function escHtml(s){ return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function matchWhen(e){
   if(whenState==='all') return true;
   if(e.weekly) return true;
@@ -511,11 +549,9 @@ function matchWhen(e){
 }
 
 function miniCard(e){
-  const grad = `linear-gradient(135deg, ${e.grad[0]}, ${e.grad[1]})`;
   const sched = e.dayLabel.replace(/^Weekly · /,'');
   return `
-  <article class="mini">
-    <span class="mini-ic" style="background:${grad}">${svg(e.icon,22,1.7)}</span>
+  <article class="mini" style="--cc:${catFill(e)}">
     <div class="mini-body">
       <div class="mini-day">${sched}</div>
       <h4 class="mini-title">${e.title}</h4>
@@ -528,11 +564,13 @@ function miniCard(e){
 
 function render(){
   const byDate = (a,b)=> a.date<b.date?-1 : a.date>b.date?1 : 0;
-  const dated = EVENTS.filter(e=>!e.weekly && matchAud(e) && matchWhen(e)).slice().sort(byDate);
-  const weekly = EVENTS.filter(e=>e.weekly && matchAud(e)).slice().sort(byDate);
+  const dated = EVENTS.filter(e=>!e.weekly && matchAud(e) && matchWhen(e) && matchSearch(e)).slice().sort(byDate);
+  const weekly = EVENTS.filter(e=>e.weekly && matchAud(e) && matchSearch(e)).slice().sort(byDate);
   grid.innerHTML = dated.length
     ? dated.map(card).join('')
-    : `<div class="empty">No dated events match this filter. Try “Everyone” or “All.”</div>`;
+    : query
+      ? `<div class="empty">No dated events match “${escHtml(searchEl.value.trim())}”. Try another word, or clear the search.</div>`
+      : `<div class="empty">No dated events match this filter. Try “Everyone” or “All.”</div>`;
   weeklyGrid.innerHTML = weekly.map(miniCard).join('');
   weeklySec.style.display = weekly.length ? '' : 'none';
   const total = dated.length + weekly.length;
@@ -549,6 +587,11 @@ document.getElementById('whenFilters').addEventListener('click', ev=>{
   document.querySelectorAll('#whenFilters .filter').forEach(f=>f.classList.remove('active'));
   b.classList.add('active'); whenState = b.dataset.when; render();
 });
+
+const searchEl = document.getElementById('search');
+const searchClear = document.getElementById('searchClear');
+searchEl.addEventListener('input', ()=>{ query = norm(searchEl.value.trim()); searchClear.hidden = !searchEl.value; render(); });
+searchClear.addEventListener('click', ()=>{ searchEl.value=''; searchEl.dispatchEvent(new Event('input')); searchEl.focus(); });
 
 document.querySelectorAll('[data-icon]').forEach(el=>{
   const sz = el.classList.contains('band-btn') || el.classList.contains('hero-link') ? 17 : 15;
