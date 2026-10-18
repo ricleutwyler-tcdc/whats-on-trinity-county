@@ -29,8 +29,12 @@ by a fresh session with no memory of prior weeks.
   `inject_weather.py`, `template.html`, `curate_overrides.py` (example), and
   `checks/check-claims.py`, `checks/check-voice.py`.
 - **The rubric** (categorization + registry source of truth): Google Drive doc
-  `1msg7NQsP-vPVwy1YKmfpDr-bgNPVSPjKqoqUolvhDqE`. The same rules are mirrored in the
+  `1jyWlfqJnY3aTtc_sDQ41uEFw1wuXu1drzxQFnGm9XFM`. The same rules are mirrored in the
   `REGISTRY` inside `generate_site.py`.
+  To change the rubric, don't ask Ric to edit it: the Drive connector can't edit a doc's
+  body, so write the whole corrected rubric as a new Google Doc with the same title in the
+  same folder (`1mC9tI9IUInLM2F6g4CqPDR-6n0EvOXn0`), read it back to confirm nothing was
+  lost, put the new ID above, and retitle the old one "SUPERSEDED …" (don't trash it).
 - **Ric's delivery rules**: the `delivering-work-to-ric` skill (voice, claims, handover).
 
 ## Steps
