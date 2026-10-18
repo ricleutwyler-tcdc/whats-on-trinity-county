@@ -393,19 +393,10 @@ def main():
     total=len(in_window)+len(weekly_js)
     tpl=re.sub(r'(id="metaCount">)[^<]+<', r'\g<1>'+str(total)+' events<', tpl, count=1)
 
-    # matchWhen windows: weekend = Fri-Sun of anchor week; thisweek = ws..ws+6; nextweek = ws+7..we
-    wend=ws+datetime.timedelta(days=(6-ws.weekday()) if ws.weekday()<=6 else 0)
-    weekend_start=ws; weekend_end=ws+datetime.timedelta(days=(6-ws.weekday())) if ws.weekday()>=4 else ws+datetime.timedelta(days=(5-ws.weekday()))
-    # simpler: weekend = anchor .. anchor+2 ; thisweek = anchor..+6 ; nextweek = anchor+7..we
-    wk_end=(ws+datetime.timedelta(days=2)).isoformat()
-    tw_end=(ws+datetime.timedelta(days=6)).isoformat()
-    nw_start=(ws+datetime.timedelta(days=7)).isoformat()
-    tpl=re.sub(r"(whenState==='weekend'\)\s*return e\.date>=')[^']+(' && e\.date<=')[^']+(')",
-               rf"\g<1>{ws.isoformat()}\g<2>{wk_end}\g<3>",tpl)
-    tpl=re.sub(r"(whenState==='thisweek'\)\s*return e\.date>=')[^']+(' && e\.date<=')[^']+(')",
-               rf"\g<1>{ws.isoformat()}\g<2>{tw_end}\g<3>",tpl)
-    tpl=re.sub(r"(whenState==='nextweek'\)\s*return e\.date>=')[^']+(' && e\.date<=')[^']+(')",
-               rf"\g<1>{nw_start}\g<2>{we.isoformat()}\g<3>",tpl)
+    # The page's day strip and "This weekend" work from this window; past days drop off in the browser.
+    tpl, n = re.subn(r'const WINDOW = \{start:"[0-9-]+", end:"[0-9-]+"\};',
+                     f'const WINDOW = {{start:"{ws.isoformat()}", end:"{we.isoformat()}"}};', tpl, count=1)
+    if n != 1: sys.exit("template.html has no WINDOW line; the day strip would show the wrong dates")
 
     open(out,'w',encoding='utf-8').write(tpl)
     print(f"anchor={anchor} window={ws}..{we}")
