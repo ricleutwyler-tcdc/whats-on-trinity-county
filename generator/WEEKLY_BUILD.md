@@ -29,8 +29,12 @@ by a fresh session with no memory of prior weeks.
   `inject_weather.py`, `template.html`, `curate_overrides.py` (example), and
   `checks/check-claims.py`, `checks/check-voice.py`.
 - **The rubric** (categorization + registry source of truth): Google Drive doc
-  `1msg7NQsP-vPVwy1YKmfpDr-bgNPVSPjKqoqUolvhDqE`. The same rules are mirrored in the
+  `1jyWlfqJnY3aTtc_sDQ41uEFw1wuXu1drzxQFnGm9XFM`. The same rules are mirrored in the
   `REGISTRY` inside `generate_site.py`.
+  To change the rubric, don't ask Ric to edit it: the Drive connector can't edit a doc's
+  body, so write the whole corrected rubric as a new Google Doc with the same title in the
+  same folder (`1mC9tI9IUInLM2F6g4CqPDR-6n0EvOXn0`), read it back to confirm nothing was
+  lost, put the new ID above, and retitle the old one "SUPERSEDED …" (don't trash it).
 - **Ric's delivery rules**: the `delivering-work-to-ric` skill (voice, claims, handover).
 
 ## Steps
@@ -75,7 +79,7 @@ exact pattern (match each event object by a unique title substring; rewrite `des
   with the whole promo sentence → `Performer: "Show"`).
 - **Category sanity** — a fly-in / show 'n' shine is **Cars**, not Live Music; a
   members-only PAC event is not the Coffee Creek karaoke; a fundraiser banquet is
-  **Community**. When in doubt, the rubric doc wins; if you make a new call, note it for
+  **Food & Fundraisers**; a hike or cleanup is **Outdoors**; a talk or class is **Talks & Learning**. When in doubt, the rubric doc wins; if you make a new call, note it for
   Ric so it can be folded into the rubric.
 - **Audience** — members-only → locals only; a countywide festival → visitor/local/family.
 
@@ -129,7 +133,7 @@ Before Ric sees anything, run a fresh reviewer over the finished page — a suba
 tool) is ideal, so the reviewer isn't the author. Give it the rendered page text and this
 explicit checklist, and have it return a list of issues (or "clean"):
 - Every event's category matches the rubric (fly-in/show 'n' shine = Cars; members-only PAC
-  event ≠ Coffee Creek karaoke; fundraiser banquet = Community; concert = Music).
+  event ≠ Coffee Creek karaoke; fundraiser banquet = Food & Fundraisers; hike/cleanup = Outdoors; talk/class = Talks & Learning; concert = Music).
 - No description echoes the raw calendar line; each is one or two warm, plain sentences in
   Ric's voice — no buzzwords, no "not X, it's Y", no salesy lines.
 - No truncated venue ("9 a", "260 S") and no run-on or mid-quote title.
