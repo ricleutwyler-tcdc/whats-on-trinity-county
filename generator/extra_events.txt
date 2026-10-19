@@ -2,3 +2,4 @@
 # Same line format as Wayne's dated "Calendar" lines: "Mon. DD: Title, details."
 # Past-dated lines are harmless — the builder only shows events inside the current ~2-week window.
 Sept. 27: Escape the Drama Trap, a free relationship-skills workshop with Leslie Gabriele, PhD, 2 to 4 p.m. at 1771 Main Street, Weaverville. Calm and defensive states, relational communication, and hands-on practice. All welcome.
+Oct. 20: Pumpkin Carving Contest, Weaverville Chamber of Commerce. Register, carve, and drop off your pumpkin by today at a participating business. $15 one pumpkin, $25 two, $30 three. Judging Oct. 31, winners announced Nov. 1. Register at https://pumpkin-carving-contest.weavervilleca.org
