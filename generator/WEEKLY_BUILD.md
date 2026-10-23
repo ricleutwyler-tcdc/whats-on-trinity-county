@@ -83,6 +83,9 @@ exact pattern (match each event object by a unique title substring; rewrite `des
   Ric so it can be folded into the rubric.
 - **Audience** — members-only → locals only; a countywide festival → visitor/local/family.
 
+Events people submit through the site's form (see `SUBMISSIONS.md`) are already checked and
+written, and sit in `extra_events.txt`. Keep their wording as it is unless something is wrong.
+
 ### 5. Weather
 The cloud sandbox blocks weather APIs. The ONLY working channel is `WebFetch` against the
 National Weather Service point forecast for Weaverville:
