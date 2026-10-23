@@ -45,7 +45,7 @@ A submission is a claim from a member of the public, so check it before it becom
   WEEKLY_BUILD.md), built only from what they wrote. Don't add facts. Keep their cost.
 - **dayLabel**: `Sat · Nov 7 · 5:30 PM`, or `5:30–8 PM` with an end time, or `Sat · Nov 7` with
   no time; a multi-day event is `Fri–Sun · Nov 6–8`.
-- **info**: their link if they gave one; otherwise the site's own page `https://events.trinitycommunitydev.org/`.
+- **info**: their link if they gave one; otherwise `""` (the card then has no "More info" button).
 - **map**: venue + town + ", CA".
 - **Never publish** the person's name, email or phone. They are for us only.
 
