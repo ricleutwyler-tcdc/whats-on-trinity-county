@@ -635,7 +635,7 @@ function card(e){
       <p class="desc">${e.desc}</p>
       ${wxLine}
       <div class="actions">
-        <a class="btn btn-info" href="${e.info}" target="_blank" rel="noopener">More info ↗</a>
+        ${e.info?`<a class="btn btn-info" href="${e.info}" target="_blank" rel="noopener">More info ↗</a>`:''}
         <a class="btn btn-map" href="${mapUrl(e.map)}" target="_blank" rel="noopener">Directions</a>
         <button type="button" class="btn btn-share" data-share="${EVENTS.indexOf(e)}" aria-label="Share this event">${svg('share',15,1.8)}<span> Share</span></button>
       </div>
@@ -680,8 +680,8 @@ function icsText(e){
     'END:VTIMEZONE','BEGIN:VEVENT',
     'UID:'+e.date+'-'+plain(e.title).toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,40)+'@events.trinitycommunitydev.org',
     'DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z', ...when,
-    'SUMMARY:'+x(e.title), 'LOCATION:'+x(e.map), 'DESCRIPTION:'+x(e.desc+'\n\nMore info: '+e.info+'\nFrom What\'s On in Trinity County: https://events.trinitycommunitydev.org'),
-    'URL:'+e.info, 'END:VEVENT','END:VCALENDAR'];
+    'SUMMARY:'+x(e.title), 'LOCATION:'+x(e.map), 'DESCRIPTION:'+x(e.desc+(e.info?'\n\nMore info: '+e.info:'')+'\nFrom What\'s On in Trinity County: https://events.trinitycommunitydev.org'),
+    ...(e.info?['URL:'+e.info]:[]), 'END:VEVENT','END:VCALENDAR'];
   // fold lines over 74 characters, as the calendar format asks
   return lines.map(l=>l.length<=74 ? l : l.match(/.{1,73}/g).join('\r\n ')).join('\r\n')+'\r\n';
 }
@@ -690,7 +690,7 @@ function googleCalUrl(e){
   return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
     + '&text='+encodeURIComponent(plain(e.title)) + '&dates='+c.start+'/'+c.end
     + (c.allDay?'':'&ctz=America/Los_Angeles')
-    + '&details='+encodeURIComponent(plain(e.desc)+'\n\nMore info: '+e.info)
+    + '&details='+encodeURIComponent(plain(e.desc)+(e.info?'\n\nMore info: '+e.info:''))
     + '&location='+encodeURIComponent(plain(e.map));
 }
 function addToCalendar(ev){
