@@ -57,6 +57,8 @@ Then:
    the window appear when a weekly rebuild reaches them.
 3. If it falls in the next seven days, rebuild the flyer:
    `python3 generator/make_flyer.py index.html flyer.html <today>`.
+   Always refresh the public feed too:
+   `python3 generator/export_events.py index.html events.json <today>`.
 4. Add each handled submission (published or held) to `generator/submissions_log.md`:
    `<netlify id> · <received date> · <title> · published | held: <reason>`.
 

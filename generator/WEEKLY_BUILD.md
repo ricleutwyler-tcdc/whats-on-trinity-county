@@ -118,6 +118,16 @@ site (`flyer-qr.svg`; the address never changes, so the QR doesn't either). The 
 curation and weather. Open it and check it fits one page; it shrinks its type when the week is
 busy. Hand `flyer.html` to Ric with `index.html` — it belongs in the repo root next to it.
 
+### 5c. events.json
+```
+python3 export_events.py index.html ../events.json <today YYYY-MM-DD>
+```
+Writes `events.json` at the repo root: every dated event from today on (weekly fixtures
+skipped), with date, day label, title, place, town, category and a link to its card. Other
+TCDC sites read it (the Revitalization Hub's Event support page), so run it whenever
+`index.html` changes, alongside the flyer. Read the town it printed for each event: a place
+that names no town shows as "Other"; if it's a regular venue, add it to `VENUES` in the script.
+
 ### 6. Checkers
 ```
 python3 checks/check-claims.py index.html
