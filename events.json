@@ -1,25 +1,7 @@
 {
- "as_of": "2026-10-27",
+ "as_of": "2026-10-30",
  "source": "https://events.trinitycommunitydev.org/",
  "events": [
-  {
-   "date": "2026-10-28",
-   "day_label": "Wed · Oct 28 · 6 PM",
-   "title": "Science on Tap",
-   "where": "Trinity County Brewing Company, 301 Main St",
-   "town": "Weaverville",
-   "category": "Talks & Learning",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-10-28-science-on-tap"
-  },
-  {
-   "date": "2026-10-28",
-   "day_label": "Wed · Oct 28 · 11 AM",
-   "title": "Weaverville Church of the Nazarene Soup Kitchen",
-   "where": "Douglas City Fire Station on Steiner Flat Road",
-   "town": "Douglas City",
-   "category": "Food & Fundraisers",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-10-28-weaverville-church-of-the-nazarene-soup-"
-  },
   {
    "date": "2026-10-30",
    "day_label": "Fri · Oct 30 · 8–11 AM",
@@ -93,6 +75,15 @@
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-01-daylight-saving-time-ends"
   },
   {
+   "date": "2026-11-01",
+   "day_label": "Sun · Nov 1 · 9 AM",
+   "title": "High Country Cruisers Coffee and Classics",
+   "where": "Up North Confectionery & Mercantile, 480 Main St, Weaverville",
+   "town": "Weaverville",
+   "category": "Cars",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-01-high-country-cruisers-coffee-and-classic"
+  },
+  {
    "date": "2026-11-04",
    "day_label": "Wed · Nov 4 · 7 PM",
    "title": "Tannahill Weavers",
@@ -120,6 +111,15 @@
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-06-line-dancing"
   },
   {
+   "date": "2026-11-06",
+   "day_label": "Fri · Nov 6",
+   "title": "Soup or Stew Contest",
+   "where": "Mad River Community Hall, Van Duzen Road, Mad River",
+   "town": "Ruth / Mad River",
+   "category": "Food & Fundraisers",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-06-soup-or-stew-contest"
+  },
+  {
    "date": "2026-11-07",
    "day_label": "Sat · Nov 7 · 5–8 PM",
    "title": "Monthly Art Walk",
@@ -136,6 +136,42 @@
    "town": "Hayfork",
    "category": "Food & Fundraisers",
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-07-roderick-hayfork-senior-center-breakfast"
+  },
+  {
+   "date": "2026-11-08",
+   "day_label": "Sun · Nov 8 · 9 AM–3 PM",
+   "title": "Craft Fair and Swap Meet",
+   "where": "Hayfork VFW Hall, 9201 Highway 3, Hayfork",
+   "town": "Hayfork",
+   "category": "Market",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-08-craft-fair-and-swap-meet"
+  },
+  {
+   "date": "2026-11-11",
+   "day_label": "Wed · Nov 11 · 7 PM",
+   "title": "Big Joe Kennedy",
+   "where": "Trinity Alps Performing Arts Center, 30 Arbuckle Court, Weaverville",
+   "town": "Weaverville",
+   "category": "Music",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-11-big-joe-kennedy"
+  },
+  {
+   "date": "2026-11-11",
+   "day_label": "Wed · Nov 11 · 9 AM",
+   "title": "Veterans Day Ceremony",
+   "where": "Lewiston Moose Family Center, 71 Lewiston Road, Lewiston",
+   "town": "Lewiston",
+   "category": "Community",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-11-veterans-day-ceremony"
+  },
+  {
+   "date": "2026-11-14",
+   "day_label": "Sat · Nov 14 · 10 AM–4 PM",
+   "title": "Festival of Light Art & Crafts Event",
+   "where": "Veterans Memorial Hall, Weaverville",
+   "town": "Weaverville",
+   "category": "Food & Fundraisers",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-14-festival-of-light-art-crafts-event"
   }
  ]
 }
