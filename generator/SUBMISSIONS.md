@@ -66,8 +66,9 @@ Then:
 - Render the page with `?today=<today>` at phone width and look at each new card.
 - Run `python3 generator/checks/check-claims.py index.html` and `check-voice.py`
   (the `white-space` CSS hits are the known false positive).
-- Commit on a branch named `submitted-events-<date>`, push, open a pull request. Do not merge.
+- Commit on a branch named `submitted-events-<date>`, push, open a pull request. Merge it
+  only when Ric says "publish" (`gh pr merge <n> --merge`), then check the live site.
 - Notify Ric (push notification) and finish with a short note: how many came in; for each new
   card its title, date and the description exactly as it will read; each held one and why; and
-  the pull request link with "merge it to publish". If you could not push, say so and put the
-  changed files' contents in the note instead.
+  the pull request link with "say publish and I'll merge it". If you could not push, say so
+  and put the changed files' contents in the note instead.
