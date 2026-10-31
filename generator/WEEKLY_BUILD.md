@@ -6,10 +6,10 @@ by a fresh session with no memory of prior weeks.
 
 ## Non-negotiables (read first)
 
-1. **Never publish to the live site.** Do NOT `git push`, do NOT commit to `main`, do NOT
-   use any GitHub token to write to the remote. Your job ends at putting the finished
-   `index.html` in front of Ric. He reviews the diff in GitHub Desktop and pushes. That
-   review is the safety gate — keep it.
+1. **Nothing publishes without Ric's "publish".** Never commit to `main` directly. Your
+   job ends at a pull request plus screenshots for Ric. When he says "publish", merge it
+   yourself (step 8). His look at the screenshots is the safety gate — keep it. Don't
+   ask him to merge or to use GitHub Desktop.
 2. **Verify in the rendered page, not just the source.** Render the built page and read it
    before handing it over. Checkers and greps read source; they cannot see a defect that
    only shows once the page renders.
@@ -23,8 +23,9 @@ by a fresh session with no memory of prior weeks.
 
 - **The calendar**: emailed by Wayne Agner, `publisher@trinityjournal.com`, as a `.txt`
   attachment, Thursday evening through noon Friday each week.
-- **The repo**: `https://github.com/ricleutwyler-tcdc/whats-on-trinity-county` (public;
-  the cloud can *read/clone* it but CANNOT push — a proxy blocks writes).
+- **The repo**: `https://github.com/ricleutwyler-tcdc/whats-on-trinity-county`. Work on a
+  branch named `weekly-YYYY-MM-DD` (today's date). On Ric's Mac, push with `gh`'s login
+  (see CLAUDE.md); a cloud session needs the repo attached with push access.
 - **The build tools** (in the repo under `generator/`): `generate_site.py`,
   `inject_weather.py`, `template.html`, `curate_overrides.py` (example), and
   `checks/check-claims.py`, `checks/check-voice.py`.
@@ -49,8 +50,13 @@ base64url MIME, and save the `.txt` attachment. Confirm the header line reads
 `TRINITY COUNTY CALENDAR OF EVENTS M-DD-YY`. If no new calendar has arrived since the last
 run, stop and tell Ric — do not rebuild from an old one.
 
+Then check nobody has built this week already: `gh pr list --state all --limit 5`. On
+Oct 30, 2026 two sessions built the same week and had to be combined by hand. If an open
+pull request for this calendar exists, build on its branch or tell Ric, rather than
+starting a second one.
+
 ### 2. Get the build tools
-Clone the repo (read is fine) into your workspace. Use `generator/generate_site.py`,
+Start a branch from the latest `main`. Use `generator/generate_site.py`,
 `generator/template.html`, `generator/inject_weather.py`, and the two checkers under
 `generator/checks/`.
 
@@ -165,17 +171,15 @@ explicit checklist, and have it return a list of issues (or "clean"):
 Fix everything the reviewer flags, then move on. If you can't run a subagent, do this pass
 yourself, slowly, reading the whole page — not just the parts you changed.
 
-### 8. Hand it to Ric (no publishing)
-- **If the device bridge to Ric's Mac is available**: write `index.html` and `flyer.html` into
-  `/Users/Ric/Documents/GitHub/whats-on-trinity-county/` (device_commit_files).
-  It appears as an uncommitted change in GitHub Desktop.
-- **If the bridge is NOT available** (his Mac is closed): email him the finished
-  `index.html` and `flyer.html` as attachments with one line — "save these over the two
-  files in whats-on-trinity-county, review in GitHub Desktop, and push."
+### 8. Hand it to Ric, then publish on his word
+Commit `index.html`, `flyer.html` and `events.json` on the weekly branch, push it, and
+open a pull request against `main` (`gh pr create`). Send Ric a short note: the pull
+request link, screenshots at phone, iPad and desktop widths, the window and event count,
+anything you had to judge, and the Facebook post (next step).
 
-Either way, send Ric a short note: the window and event count, anything you had to judge,
-and the Facebook post (next step). Never state the site is updated — it isn't until he
-pushes.
+When he says "publish": `gh pr merge <n> --merge`, then wait for the live site to show the
+new window and "Updated" date (Netlify takes under a minute) and tell him it's live. Never
+say the site is updated before that.
 
 ### 9. Facebook post
 Draft a short post for this update and include it in the note to Ric. See
@@ -209,8 +213,10 @@ already known — this says "we refreshed it, here's what's coming."
 
 - Weather APIs (api.weather.gov, open-meteo, wttr.in) are blocked in the sandbox — only the
   NWS `MapClick` page via WebFetch works.
-- The cloud session cannot push to the repo (proxy blocks unauthorized repos) — that's why
-  publishing routes through Ric's GitHub Desktop, by design.
+- Netlify deploys every commit to `main`, so publishing goes through a pull request that is
+  merged only on Ric's "publish".
+- The generator drops a calendar line that continues on the next line (Oct 30: the
+  Veterans Day breakfast). Read the raw calendar around each event you curate.
 - `og-image.png` is evergreen (the mountainscape share card) — do not regenerate it weekly.
 - The generator's `REGISTRY` and `WEEKLY_TITLE` are the durable home for any categorization
   or title fix — a defect fixed there won't recur. Prefer fixing the generator over
