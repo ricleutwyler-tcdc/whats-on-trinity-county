@@ -19,6 +19,11 @@ default branch. Read `README.md` and `TRAFFIC.md` first.
   PR yourself (`gh pr merge <n> --merge`); that merge is the deploy. Then check
   the live site and tell him it's live. Don't hand him GitHub Desktop steps or
   ask him to merge.
+- **Each production deploy costs Netlify credits (previews are free).** `netlify.toml`
+  skips the deploy when a merge changes only `*.md`, `generator/` or `_to_delete/`. For a
+  small site change that isn't urgent, open the PR with the `ride-along` label so it ships
+  inside the Friday weekly build's merge (see `generator/WEEKLY_BUILD.md`, step 2) instead
+  of costing a deploy of its own.
 - **Keep event and link data accurate**, and don't remove or rename existing
   links in a way that would break URLs people already have.
 

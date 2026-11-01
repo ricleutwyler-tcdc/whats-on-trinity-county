@@ -56,7 +56,16 @@ pull request for this calendar exists, build on its branch or tell Ric, rather t
 starting a second one.
 
 ### 2. Get the build tools
-Start a branch from the latest `main`. Use `generator/generate_site.py`,
+Start a branch from the latest `main`.
+
+**Ride-alongs (saves Netlify credits).** Every merge to `main` that changes the public site
+is a production deploy, and each costs Netlify credits; previews are free. So small changes
+wait for the weekly build instead of getting their own deploy. List them with
+`gh pr list --label ride-along --state open`. For each one that is not a draft, merge its
+branch into this week's branch (`git merge --no-ff origin/<its branch>`). If it conflicts or
+breaks a check, leave it out and say so. Name each in the weekly PR description
+("Also ships: #N, title"). After the weekly PR is merged, close each ride-along with a
+comment pointing to it. A draft ride-along is not ready: leave it alone. Use `generator/generate_site.py`,
 `generator/template.html`, `generator/inject_weather.py`, and the two checkers under
 `generator/checks/`.
 
