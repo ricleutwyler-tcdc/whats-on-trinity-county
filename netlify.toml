@@ -3,6 +3,10 @@
 [build]
   publish = "."
   command = ""
+  # Each production deploy costs Netlify credits. Skip the deploy when a commit changes only
+  # things visitors never see: runbooks and notes (*.md), the generator folder, _to_delete.
+  # Exit 0 skips; anything else deploys. Always deploys when there is no earlier commit to compare.
+  ignore = "[ -n \"$CACHED_COMMIT_REF\" ] && [ \"$CACHED_COMMIT_REF\" != \"$COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)generator' ':(exclude)*.md' ':(exclude)_to_delete'"
 
 # events.json is a public copy of what the page already shows, for other TCDC sites
 # (the Revitalization Hub). Any site may read it; keep the cache short so updates show up.
