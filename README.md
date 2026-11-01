@@ -7,21 +7,26 @@ The public community-events site for Trinity County — a collaboration of the *
 
 ## How it works
 
-- `index.html` — the entire site, a single self-contained file (inline CSS/JS). This is what Netlify publishes.
+- `index.html` — the entire site, a single self-contained file (inline CSS/JS). Generated; don't edit by hand.
+- `submit.html` — the "Add your event" form (Netlify Forms), served as /submit.
+- `flyer.html` — the printable one-page flyer for the coming week, served as /flyer.
+- `events.json` — a public feed of upcoming events that other TCDC sites read (the Revitalization Hub).
 - `og-image.png` — the social-preview image referenced by the Open Graph tags in `index.html`.
-- `netlify.toml` — tells Netlify to publish the repo root as a static site (no build step).
+- `netlify.toml` — publishes the repo root as a static site (no build step), sets the feed's headers, and hides the generator and notes from visitors.
 - `generator/` — the weekly rebuild pipeline (see below).
 
-Netlify is linked to this repository: **any commit to the default branch republishes the site automatically.** No manual upload, no browser needed.
+Netlify is linked to this repository: **any commit to the default branch republishes the site automatically.**
 
-## Weekly update (hands-off)
+## Weekly update
 
-Each week The Trinity Journal sends the community calendar. The process:
+Each Friday The Trinity Journal emails the community calendar. A scheduled Claude job:
 
-1. A scheduled task reads that week's calendar email.
-2. `generator/generate_site.py` rebuilds `index.html` from the calendar, using the categorization rubric and known-events registry for accurate categories and human-quality descriptions.
-3. The rebuilt `index.html` is committed to this repo.
-4. Netlify republishes automatically.
+1. Reads that week's calendar email.
+2. Runs `generator/generate_site.py` to rebuild `index.html`, then curates every new event by hand, adds weather, and rebuilds `flyer.html` and `events.json`.
+3. Runs the checks, renders the page at phone, iPad and desktop widths, and opens a pull request with screenshots.
+4. Merges it when Ric says "publish"; Netlify republishes.
+
+The full procedure is `generator/WEEKLY_BUILD.md`. Events people submit through the form follow `generator/SUBMISSIONS.md`.
 
 `generator/template.html` is the page shell (brand, header, footer, Open Graph tags). The generator replaces the events data inside it — so edits to branding or meta tags belong in the template, and they carry into every future rebuild.
 
