@@ -9,6 +9,7 @@ The public community-events site for Trinity County — a collaboration of the *
 
 - `index.html` — the entire site, a single self-contained file (inline CSS/JS). Generated; don't edit by hand.
 - `submit.html` — the "Add your event" form (Netlify Forms), served as /submit.
+- `about.html` — the About page (the collaboration, sources and how the page is built, the report-a-problem link), served as /about. Hand-maintained; the generator doesn't touch it.
 - `flyer.html` — the printable one-page flyer for the coming week, served as /flyer.
 - `events.json` — a public feed of upcoming events that other TCDC sites read (the Revitalization Hub).
 - `og-image.png` — the social-preview image referenced by the Open Graph tags in `index.html`.

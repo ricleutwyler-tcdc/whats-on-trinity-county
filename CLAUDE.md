@@ -33,3 +33,22 @@ default branch. Read `README.md` and `TRAFFIC.md` first.
 - On Ric's Mac, `gh` is at `~/.local/bin/gh`, signed in as ricleutwyler-tcdc.
   Plain `git push` has no login; push with
   `git -c credential.helper= -c credential.helper='!gh auth git-credential' push -u origin <branch>`.
+
+## TCDC design standards
+This site is part of the TCDC family and follows the shared TCDC design system
+(canonical copy: `ricleutwyler-tcdc/tcdc-brand` → `tcdc-design-system.md`,
+`tcdc-footer.js`). Reuse the system; don't reinvent shared UI.
+- **This site:** site key `whats-on` · accent `#D89311`.
+- **Footer — use the shared component, never build one:** load
+  `https://trinitycommunitydev.org/tcdc-footer.js` and place
+  `<tcdc-footer site="whats-on"></tcdc-footer>`. To change the footer, edit the
+  component in the brand repo, not per site. This site's own footer content (just the
+  "Report a problem" link) goes inside the element, in
+  `generator/template.html`; the "Sources & how this was built" note lives on
+  `about.html`. Don't put the collaboration
+  line or the updates sign-up there; the component renders those.
+- **Standards:** shell stays identical across sites, only the per-site signature
+  changes; UX baseline (real type scale, 8px spacing, WCAG AA contrast, full
+  width with body text ≤68ch, one primary action); usability beats brand
+  decoration; don't build pages or footers as artifacts; show Ric a rendered
+  mockup before building or deploying anything new.
