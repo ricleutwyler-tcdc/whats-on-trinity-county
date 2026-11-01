@@ -37,9 +37,10 @@ This site is part of the TCDC family and follows the shared TCDC design system
 - **Footer — use the shared component, never build one:** load
   `https://trinitycommunitydev.org/tcdc-footer.js` and place
   `<tcdc-footer site="whats-on"></tcdc-footer>`. To change the footer, edit the
-  component in the brand repo, not per site. This site's own footer content (the
-  "Sources & how this was built" note and the "Report a problem" link) goes
-  inside the element, in `generator/template.html`. Don't put the collaboration
+  component in the brand repo, not per site. This site's own footer content (just the
+  "Report a problem" link) goes inside the element, in
+  `generator/template.html`; the "Sources & how this was built" note lives on
+  `about.html`. Don't put the collaboration
   line or the updates sign-up there; the component renders those.
 - **Standards:** shell stays identical across sites, only the per-site signature
   changes; UX baseline (real type scale, 8px spacing, WCAG AA contrast, full
