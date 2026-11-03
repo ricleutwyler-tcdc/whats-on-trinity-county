@@ -1,88 +1,7 @@
 {
- "as_of": "2026-10-30",
+ "as_of": "2026-11-02",
  "source": "https://events.trinitycommunitydev.org/",
  "events": [
-  {
-   "date": "2026-10-30",
-   "day_label": "Fri · Oct 30 · 8–11 AM",
-   "title": "Douglas City Fire Belles Halloween Bake Sale",
-   "where": "Douglas City Fire Hall, 101 Steiner Flat Road",
-   "town": "Douglas City",
-   "category": "Food & Fundraisers",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-10-30-douglas-city-fire-belles-halloween-bake-"
-  },
-  {
-   "date": "2026-10-30",
-   "day_label": "Fri · Oct 30 · 9 AM",
-   "title": "Fire Jills Halloween Bake Sale",
-   "where": "Junction City Store on Highway 299",
-   "town": "Junction City",
-   "category": "Food & Fundraisers",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-10-30-fire-jills-halloween-bake-sale"
-  },
-  {
-   "date": "2026-10-30",
-   "day_label": "Fri · Oct 30 · 6 PM",
-   "title": "Pre-Halloween Party with the Irie Rockerz",
-   "where": "Trinity County Brewing Company, 301 Main St",
-   "town": "Weaverville",
-   "category": "Music",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-10-30-pre-halloween-party-with-the-irie-rocker"
-  },
-  {
-   "date": "2026-10-31",
-   "day_label": "Sat · Oct 31 · 5–7 PM",
-   "title": "Fall Festival & Trunk or Treat",
-   "where": "Lewiston Community Church, Lewiston Rd. & Viola Ln., Lewiston",
-   "town": "Lewiston",
-   "category": "Family",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-10-31-fall-festival-trunk-or-treat"
-  },
-  {
-   "date": "2026-10-31",
-   "day_label": "Sat · Oct 31 · 5:30–7 PM",
-   "title": "Halloween Candy Giveaway",
-   "where": "Historic downtown Weaverville",
-   "town": "Weaverville",
-   "category": "Family",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-10-31-halloween-candy-giveaway"
-  },
-  {
-   "date": "2026-10-31",
-   "day_label": "Sat · Oct 31 · 7 PM",
-   "title": "North Fork Grange Halloween Dance Party",
-   "where": "Grange Hall, 131 Dutch Creek Road, Junction City",
-   "town": "Junction City",
-   "category": "Music",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-10-31-north-fork-grange-halloween-dance-party"
-  },
-  {
-   "date": "2026-11-01",
-   "day_label": "Sun · Nov 1 · 8–11 AM",
-   "title": "Six Rivers Community Breakfast",
-   "where": "Ruth Lake CSD Community Hall, 591 Van Duzen Road, Mad River",
-   "town": "Ruth / Mad River",
-   "category": "Food & Fundraisers",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-01-six-rivers-community-breakfast"
-  },
-  {
-   "date": "2026-11-01",
-   "day_label": "Sun · Nov 1 · 2 AM",
-   "title": "Daylight Saving Time Ends",
-   "where": "Trinity County",
-   "town": "Other",
-   "category": "Community",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-01-daylight-saving-time-ends"
-  },
-  {
-   "date": "2026-11-01",
-   "day_label": "Sun · Nov 1 · 9 AM",
-   "title": "High Country Cruisers Coffee and Classics",
-   "where": "Up North Confectionery & Mercantile, 480 Main St, Weaverville",
-   "town": "Weaverville",
-   "category": "Cars",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-01-high-country-cruisers-coffee-and-classic"
-  },
   {
    "date": "2026-11-04",
    "day_label": "Wed · Nov 4 · 7 PM",
@@ -136,6 +55,15 @@
    "town": "Hayfork",
    "category": "Food & Fundraisers",
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-07-roderick-hayfork-senior-center-breakfast"
+  },
+  {
+   "date": "2026-11-07",
+   "day_label": "Sat · Nov 7 · 10 AM–3 PM",
+   "title": "One Fall Day Crafts and Vendor Fair",
+   "where": "Salyer Wayside Chapel, 1020 State Highway 299, Salyer",
+   "town": "Salyer",
+   "category": "Market",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-07-one-fall-day-crafts-and-vendor-fair"
   },
   {
    "date": "2026-11-08",
