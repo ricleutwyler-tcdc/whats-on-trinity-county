@@ -47,8 +47,9 @@ TOWN_ALIASES = {
     'Hyampom':       ['hyampom'],
     'Big Bar':       ['big bar','del loma'],
     'Ruth':          ['ruth','mad river','ruth lake'],
+    'Salyer':        ['salyer'],
 }
-OUTLYING = {'Hayfork','Trinity Center','Junction City','Hyampom','Big Bar','Ruth'}
+OUTLYING = {'Hayfork','Trinity Center','Junction City','Hyampom','Big Bar','Ruth','Salyer'}
 
 
 def town_for(blob):

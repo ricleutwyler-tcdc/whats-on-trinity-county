@@ -309,17 +309,35 @@ def weekly_obj(title,item,wsat):
     fields.append(f'wx:null, info:J, map:"{esc(where)}, Trinity County, CA"')
     return "  { "+", ".join(fields)+" }"
 
+def horizon_where(e):
+    """Short place label for a horizon card. Prefer the town the line names over a
+    venue fragment: 'downtown Weaverville' events list sub-venues (Bandstand, Trinity
+    Theatre) that aren't where the event is, and a clipped time ('2 to 4 p') is no place."""
+    d=e['detail']; low=d.lower()
+    if 'downtown weaverville' in low: return "Downtown Weaverville"
+    if 'downtown lewiston' in low: return "Downtown Lewiston"
+    w=extract_where(d)
+    if w and not re.search(r'\d', w.split(',')[0]) and not re.search(r'\b\d+ to \d+|\b[ap]$', w):
+        return w
+    if w and re.search(r'\b(Road|Drive|St\.?|Court|Highway)\b', w) and not re.search(r'\b[ap]$', w):
+        return w
+    m=re.match(r'([A-Z][\w’\']*(?: [A-Z][\w’\']*)*) Grange', e['title'])
+    if m: return m.group(1)+" Grange"
+    for t in ('Weaverville','Lewiston','Hayfork','Trinity Center','Junction City','Douglas City','Hyampom','Salyer','Mad River','Ruth'):
+        if t.lower() in low or t.lower() in e['title'].lower(): return t
+    return "Trinity County"
+
 def horizon_cards(dated, we):
     fut=[e for e in dated if e['date']>we]
     fut.sort(key=lambda e:e['date'])
     picks=[e for e in fut if is_featured(e['title'],e['detail'],classify(e['title'],e['detail']))
-           or any(k in e['title'].lower() for k in ('festival','annual','christmas','new year','homecoming','fair'))]
+           or any(k in e['title'].lower() for k in ('festival','annual','christmas','new year','homecoming','fair','fireworks'))]
     picks=picks[:9]
     cards=[]
     for e in picks:
         sd=e['date']; ed=e.get('end')
         day=str(sd.day)+("–%d"%ed.day if ed and ed!=sd else "")
-        where=extract_where(e['detail']) or "Trinity County"
+        where=horizon_where(e)
         cards.append(f'      <div class="hz-card"><div class="hz-when"><div class="hz-mo">{sd.strftime("%b")}</div>'
                      f'<div class="hz-day">{day}</div></div><div class="hz-body">'
                      f'<div class="hz-title">{html.escape(e["title"])}</div>'

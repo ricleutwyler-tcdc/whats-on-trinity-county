@@ -1,25 +1,7 @@
 {
- "as_of": "2026-11-02",
+ "as_of": "2026-11-06",
  "source": "https://events.trinitycommunitydev.org/",
  "events": [
-  {
-   "date": "2026-11-04",
-   "day_label": "Wed · Nov 4 · 7 PM",
-   "title": "Tannahill Weavers",
-   "where": "Trinity Alps Performing Arts Center, 30 Arbuckle Court, Weaverville",
-   "town": "Weaverville",
-   "category": "Music",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-04-tannahill-weavers"
-  },
-  {
-   "date": "2026-11-05",
-   "day_label": "Thu · Nov 5 · 7 PM",
-   "title": "Trinity Players Members-Only Karaoke Night",
-   "where": "Trinity Alps Performing Arts Center, 30 Arbuckle Court, Weaverville",
-   "town": "Weaverville",
-   "category": "Music",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-05-trinity-players-members-only-karaoke-nig"
-  },
   {
    "date": "2026-11-06",
    "day_label": "Fri · Nov 6 · 7–9 PM",
@@ -28,15 +10,6 @@
    "town": "Weaverville",
    "category": "Dance",
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-06-line-dancing"
-  },
-  {
-   "date": "2026-11-06",
-   "day_label": "Fri · Nov 6",
-   "title": "Soup or Stew Contest",
-   "where": "Mad River Community Hall, Van Duzen Road, Mad River",
-   "town": "Ruth / Mad River",
-   "category": "Food & Fundraisers",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-06-soup-or-stew-contest"
   },
   {
    "date": "2026-11-07",
@@ -49,21 +22,21 @@
   },
   {
    "date": "2026-11-07",
-   "day_label": "Sat · Nov 7 · 8–10 AM",
-   "title": "Roderick/Hayfork Senior Center Breakfast",
-   "where": "Roderick/Hayfork Senior Center, 90-A Coral Road, Hayfork",
-   "town": "Hayfork",
-   "category": "Food & Fundraisers",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-07-roderick-hayfork-senior-center-breakfast"
-  },
-  {
-   "date": "2026-11-07",
    "day_label": "Sat · Nov 7 · 10 AM–3 PM",
    "title": "One Fall Day Crafts and Vendor Fair",
    "where": "Salyer Wayside Chapel, 1020 State Highway 299, Salyer",
    "town": "Salyer",
    "category": "Market",
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-07-one-fall-day-crafts-and-vendor-fair"
+  },
+  {
+   "date": "2026-11-07",
+   "day_label": "Sat · Nov 7 · 8–10 AM",
+   "title": "Roderick/Hayfork Senior Center Breakfast",
+   "where": "Roderick/Hayfork Senior Center, 90-A Coral Road, Hayfork",
+   "town": "Hayfork",
+   "category": "Food & Fundraisers",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-07-roderick-hayfork-senior-center-breakfast"
   },
   {
    "date": "2026-11-08",
@@ -100,6 +73,60 @@
    "town": "Weaverville",
    "category": "Food & Fundraisers",
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-14-festival-of-light-art-crafts-event"
+  },
+  {
+   "date": "2026-11-15",
+   "day_label": "Sun · Nov 15 · 3 PM",
+   "title": "Hildaland",
+   "where": "Trinity Alps Performing Arts Center, 30 Arbuckle Court, Weaverville",
+   "town": "Weaverville",
+   "category": "Music",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-15-hildaland"
+  },
+  {
+   "date": "2026-11-19",
+   "day_label": "Thu · Nov 19 · 4–6 PM",
+   "title": "Roderick/Hayfork Senior Center Drive-Through Dinner",
+   "where": "Roderick/Hayfork Senior Center, 90-A Coral Road, Hayfork",
+   "town": "Hayfork",
+   "category": "Food & Fundraisers",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-19-roderick-hayfork-senior-center-drive-thr"
+  },
+  {
+   "date": "2026-11-20",
+   "day_label": "Fri · Nov 20 · 7–9 PM",
+   "title": "Line Dancing",
+   "where": "Tangle Blue Saloon, 160 Nugget Lane, Weaverville",
+   "town": "Weaverville",
+   "category": "Dance",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-20-line-dancing"
+  },
+  {
+   "date": "2026-11-21",
+   "day_label": "Sat · Nov 21 · 10 AM–12 PM",
+   "title": "Pine Nut Bead Necklaces",
+   "where": "Wintu Educational & Cultural Council, 140 S. Miner St., Weaverville",
+   "town": "Weaverville",
+   "category": "Talks & Learning",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-21-pine-nut-bead-necklaces"
+  },
+  {
+   "date": "2026-11-21",
+   "day_label": "Sat · Nov 21 · 3–10 PM",
+   "title": "TAPACAPALOOZA II",
+   "where": "Trinity Alps Performing Arts Center, 30 Arbuckle Court, Weaverville",
+   "town": "Weaverville",
+   "category": "Music",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-21-tapacapalooza-ii"
+  },
+  {
+   "date": "2026-11-21",
+   "day_label": "Sat · Nov 21 · 8–11 AM",
+   "title": "VFW Breakfasts",
+   "where": "Hayfork VFW Hall and Veterans Memorial Hall, Weaverville",
+   "town": "Hayfork",
+   "category": "Food & Fundraisers",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-21-vfw-breakfasts"
   }
  ]
 }
