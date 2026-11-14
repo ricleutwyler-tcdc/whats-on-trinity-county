@@ -14,16 +14,20 @@ default branch. Read `README.md` and `TRAFFIC.md` first.
 - **Don't break the weekly pipeline.** The generator reads the calendar email
   and regenerates the site; keep its inputs, rubric, and registry intact.
 - **Netlify auto-publishes on any commit to the default branch.** So do **not**
-  commit to the default branch directly. Push a feature branch, open a PR, and
-  show Ric screenshots (phone, iPad, desktop). When he says "publish", merge the
-  PR yourself (`gh pr merge <n> --merge`); that merge is the deploy. Then check
-  the live site and tell him it's live. Don't hand him GitHub Desktop steps or
-  ask him to merge.
-- **Each production deploy costs Netlify credits (previews are free).** `netlify.toml`
-  skips the deploy when a merge changes only `*.md`, `generator/` or `_to_delete/`. For a
-  small site change that isn't urgent, open the PR with the `ride-along` label so it ships
-  inside the Friday weekly build's merge (see `generator/WEEKLY_BUILD.md`, step 2) instead
-  of costing a deploy of its own.
+  commit to the default branch directly. Every change goes through a feature branch
+  and a PR; merging the PR (`gh pr merge <n> --merge`) is the deploy. Then check the
+  live site before saying it's live. Don't hand Ric GitHub Desktop steps or ask him
+  to merge.
+- **Who merges.** The scheduled weekly build and the submitted-events check publish
+  on their own: they merge their PR once every check in their runbook passes, then
+  email Ric that it's live (Ric, Nov 13, 2026: "automate this so all is handled
+  without me being involved... I just want to be notified"). Anything they can't
+  pass, they leave unmerged and tell him. Any other change (design, wording,
+  structure) still waits: show Ric screenshots (phone, iPad, desktop) and merge
+  when he says "publish".
+- **Netlify deploys are no longer limited** (Ric fixed the credits, Nov 2, 2026).
+  `netlify.toml` still skips the deploy when a merge changes only `*.md`, `generator/`
+  or `_to_delete/`. The `ride-along` label is no longer needed.
 - **Keep event and link data accurate**, and don't remove or rename existing
   links in a way that would break URLs people already have.
 

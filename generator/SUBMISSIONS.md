@@ -1,9 +1,9 @@
 # What's On — handling events people submit
 
 People add events with the form at events.trinitycommunitydev.org/submit.html. Nothing they
-send goes live by itself: a daily check turns each submission into a card and opens a pull
-request, and **Ric merging that pull request is what publishes it.** This file is the procedure
-for that daily check. Follow it top to bottom; it is written for a fresh session.
+send goes live untouched: a check (Mon, Wed, Fri) turns each submission into a card, and since
+Nov 13, 2026 **it publishes the ones that pass every check below and holds anything doubtful**,
+then emails Ric. This file is the procedure for that check. Follow it top to bottom; it is written for a fresh session.
 
 ## Where submissions are
 Netlify Forms on site `trinity-county-events-demo` (siteId `11c1b6fc-d719-4862-807a-0b90ee6bd865`).
@@ -62,13 +62,14 @@ Then:
 4. Add each handled submission (published or held) to `generator/submissions_log.md`:
    `<netlify id> · <received date> · <title> · published | held: <reason>`.
 
-## Check, then hand to Ric
+## Check, publish, then tell Ric
 - Render the page with `?today=<today>` at phone width and look at each new card.
 - Run `python3 generator/checks/check-claims.py index.html` and `check-voice.py`
   (the `white-space` CSS hits are the known false positive).
-- Commit on a branch named `submitted-events-<date>`, push, open a pull request. Merge it
-  only when Ric says "publish" (`gh pr merge <n> --merge`), then check the live site.
-- Notify Ric (push notification) and finish with a short note: how many came in; for each new
-  card its title, date and the description exactly as it will read; each held one and why; and
-  the pull request link with "say publish and I'll merge it". If you could not push, say so
-  and put the changed files' contents in the note instead.
+- Commit on a branch named `submitted-events-<date>`, push, open a pull request. If every
+  card passed every check above, merge it (`gh pr merge <n> --merge`) and check the live site
+  shows each new card. If anything failed that you can't fix, don't merge.
+- Email Ric (Gmail, to ric.leutwyler@gmail.com only): how many came in; for each new card its
+  title, date and the description exactly as it reads; each held one and why; and the pull
+  request link. Never say it's live before you've seen it live. If you could not push, say so
+  and put the changed files' contents in the email instead.

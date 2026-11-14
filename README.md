@@ -24,8 +24,8 @@ Each Friday The Trinity Journal emails the community calendar. A scheduled Claud
 
 1. Reads that week's calendar email.
 2. Runs `generator/generate_site.py` to rebuild `index.html`, then curates every new event by hand, adds weather, and rebuilds `flyer.html` and `events.json`.
-3. Runs the checks, renders the page at phone, iPad and desktop widths, and opens a pull request with screenshots.
-4. Merges it when Ric says "publish"; Netlify republishes.
+3. Runs the checks and an independent review, renders the page at phone, iPad and desktop widths, and opens a pull request.
+4. Publishes it once every check passes (Netlify republishes), then emails Ric that it's live.
 
 The full procedure is `generator/WEEKLY_BUILD.md`. Events people submit through the form follow `generator/SUBMISSIONS.md`.
 
