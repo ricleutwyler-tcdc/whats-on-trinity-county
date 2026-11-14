@@ -6,10 +6,11 @@ by a fresh session with no memory of prior weeks.
 
 ## Non-negotiables (read first)
 
-1. **Nothing publishes without Ric's "publish".** Never commit to `main` directly. Your
-   job ends at a pull request plus screenshots for Ric. When he says "publish", merge it
-   yourself (step 8). His look at the screenshots is the safety gate — keep it. Don't
-   ask him to merge or to use GitHub Desktop.
+1. **Publish through a pull request, and only when every check passes.** Never commit
+   to `main` directly. Since Nov 13, 2026 the weekly build publishes itself: Ric asked
+   for it to be handled without him and to be told afterwards. So the checks in steps
+   6–7b are the safety gate now — keep every one. If something fails that you can't
+   fix, leave the pull request unmerged and tell Ric what's wrong (step 8).
 2. **Verify in the rendered page, not just the source.** Render the built page and read it
    before handing it over. Checkers and greps read source; they cannot see a defect that
    only shows once the page renders.
@@ -58,14 +59,8 @@ starting a second one.
 ### 2. Get the build tools
 Start a branch from the latest `main`.
 
-**Ride-alongs (saves Netlify credits).** Every merge to `main` that changes the public site
-is a production deploy, and each costs Netlify credits; previews are free. So small changes
-wait for the weekly build instead of getting their own deploy. List them with
-`gh pr list --label ride-along --state open`. For each one that is not a draft, merge its
-branch into this week's branch (`git merge --no-ff origin/<its branch>`). If it conflicts or
-breaks a check, leave it out and say so. Name each in the weekly PR description
-("Also ships: #N, title"). After the weekly PR is merged, close each ride-along with a
-comment pointing to it. A draft ride-along is not ready: leave it alone. Use `generator/generate_site.py`,
+Netlify deploys are no longer limited (Nov 2, 2026), so there are no ride-alongs to
+fold in. Use `generator/generate_site.py`,
 `generator/template.html`, `generator/inject_weather.py`, and the two checkers under
 `generator/checks/`.
 
@@ -180,15 +175,19 @@ explicit checklist, and have it return a list of issues (or "clean"):
 Fix everything the reviewer flags, then move on. If you can't run a subagent, do this pass
 yourself, slowly, reading the whole page — not just the parts you changed.
 
-### 8. Hand it to Ric, then publish on his word
+### 8. Publish, then tell Ric
 Commit `index.html`, `flyer.html` and `events.json` on the weekly branch, push it, and
-open a pull request against `main` (`gh pr create`). Send Ric a short note: the pull
-request link, screenshots at phone, iPad and desktop widths, the window and event count,
-anything you had to judge, and the Facebook post (next step).
+open a pull request against `main` (`gh pr create`).
 
-When he says "publish": `gh pr merge <n> --merge`, then wait for the live site to show the
-new window and "Updated" date (Netlify takes under a minute) and tell him it's live. Never
-say the site is updated before that.
+If every check passed and the reviewer's real errors are fixed: `gh pr merge <n> --merge`,
+then wait for the live site to show the new window and "Updated" date (Netlify takes under
+a minute; check `/flyer` and `/events.json` too). Then email Ric (Gmail, to
+ric.leutwyler@gmail.com only): the live link, the window and event count, what's new,
+anything you judged or left out, the pull request link, and the Facebook post (next step).
+Never say the site is live before you've seen it live.
+
+If a check fails and you can't fix it, don't merge: email Ric what's wrong and the pull
+request link, and leave it for him.
 
 ### 9. Facebook post
 Draft a short post for this update and include it in the note to Ric. See
