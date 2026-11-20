@@ -1,25 +1,7 @@
 {
- "as_of": "2026-11-12",
+ "as_of": "2026-11-19",
  "source": "https://events.trinitycommunitydev.org/",
  "events": [
-  {
-   "date": "2026-11-14",
-   "day_label": "Sat · Nov 14 · 10 AM–4 PM",
-   "title": "Festival of Light Art & Crafts Event",
-   "where": "Veterans Memorial Hall, Weaverville",
-   "town": "Weaverville",
-   "category": "Food & Fundraisers",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-14-festival-of-light-art-crafts-event"
-  },
-  {
-   "date": "2026-11-15",
-   "day_label": "Sun · Nov 15 · 3 PM",
-   "title": "Hildaland",
-   "where": "Trinity Alps Performing Arts Center, 30 Arbuckle Court, Weaverville",
-   "town": "Weaverville",
-   "category": "Music",
-   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-15-hildaland"
-  },
   {
    "date": "2026-11-19",
    "day_label": "Thu · Nov 19",
@@ -84,6 +66,15 @@
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-25-weaverville-church-of-the-nazarene-soup-"
   },
   {
+   "date": "2026-11-26",
+   "day_label": "Thu · Nov 26 · 9 AM",
+   "title": "Trinity High School Turkey Trot",
+   "where": "Trinity High School track, Weaverville",
+   "town": "Weaverville",
+   "category": "Sports",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-26-trinity-high-school-turkey-trot"
+  },
+  {
    "date": "2026-11-27",
    "day_label": "Fri · Nov 27",
    "title": "Mountain Magic Christmas",
@@ -91,6 +82,42 @@
    "town": "Weaverville",
    "category": "Festival",
    "url": "https://events.trinitycommunitydev.org/#ev-2026-11-27-mountain-magic-christmas"
+  },
+  {
+   "date": "2026-11-28",
+   "day_label": "Sat · Nov 28 · 3–7 PM",
+   "title": "Lewiston Fireworks & Bridge Lighting",
+   "where": "Lewiston",
+   "town": "Lewiston",
+   "category": "Festival",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-11-28-lewiston-fireworks-bridge-lighting"
+  },
+  {
+   "date": "2026-12-04",
+   "day_label": "Fri · Dec 4 · 5:30 PM",
+   "title": "Hayfork Dawn Hospice Tree Lighting",
+   "where": "Roderick Senior Center, Hayfork",
+   "town": "Hayfork",
+   "category": "Community",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-12-04-hayfork-dawn-hospice-tree-lighting"
+  },
+  {
+   "date": "2026-12-04",
+   "day_label": "Fri · Dec 4 · 7–9 PM",
+   "title": "Line dancing at the Tangle Blue Saloon",
+   "where": "Tangle Blue Saloon, 160 Nugget Lane, Weaverville",
+   "town": "Weaverville",
+   "category": "Dance",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-12-04-line-dancing-at-the-tangle-blue-saloon"
+  },
+  {
+   "date": "2026-12-04",
+   "day_label": "Fri · Dec 4 · 7 PM",
+   "title": "Trinity Players Members-Only Karaoke Night",
+   "where": "Trinity Alps Performing Arts Center, 30 Arbuckle Court, Weaverville",
+   "town": "Weaverville",
+   "category": "Music",
+   "url": "https://events.trinitycommunitydev.org/#ev-2026-12-04-trinity-players-members-only-karaoke-nig"
   }
  ]
 }
