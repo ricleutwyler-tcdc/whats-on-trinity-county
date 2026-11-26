@@ -221,11 +221,12 @@ already known — this says "we refreshed it, here's what's coming."
 
 - Weather APIs (api.weather.gov, open-meteo, wttr.in) are blocked in the sandbox — only the
   NWS `MapClick` page via WebFetch works.
-- Netlify deploys every commit to `main`, so publishing goes through a pull request that is
-  merged only on Ric's "publish".
+- Netlify deploys every commit to `main`, so publishing goes through a pull request. Since
+  Nov 13, 2026 this build merges its own pull request once every check passes (step 8);
+  any other change (design, wording, structure) still waits for Ric's "publish".
 - The generator drops a calendar line that continues on the next line (Oct 30: the
   Veterans Day breakfast). Read the raw calendar around each event you curate.
-- `og-image.png` is evergreen (the mountainscape share card) — do not regenerate it weekly.
+- The share card (`og-2026-11.jpg`) is evergreen (the mountainscape share card) — do not regenerate it weekly.
 - The generator's `REGISTRY` and `WEEKLY_TITLE` are the durable home for any categorization
   or title fix — a defect fixed there won't recur. Prefer fixing the generator over
   re-patching output, when a fix is general.
